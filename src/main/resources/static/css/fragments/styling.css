@@ -1,0 +1,13 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #373B40;
+    font-family: 'Work Sans', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}

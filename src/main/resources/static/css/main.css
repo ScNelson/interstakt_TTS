@@ -1,0 +1,68 @@
+.leftBodyDiv {
+    margin-left: 60px;
+}
+
+.siteDescriptionDiv {
+    margin-top: 105px;
+    color: white;
+}
+
+.siteDescriptionTitle {
+    font-size: 36px;
+}
+
+.siteDescriptionBody {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.logoDiv {
+    margin-top: 115px;
+    text-align: center;
+}
+
+.interstaktLogo {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+.interstaktTitle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 48px;
+    color: white;
+    margin-top: 3px;
+}
+
+.buttonDiv {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.interstaktButton {
+    width: 156px;
+    height: 54px;
+    margin-right: 36px;
+    font-size: 24px;
+    background-color: black;
+    color: white;
+    display: inline;
+}
+
+.fade.in {
+opacity: 1;
+}
+.modal.in .modal-dialog {
+-webkit-transform: translate(0, 0);
+-o-transform: translate(0, 0);
+transform: translate(0, 0);
+}
+
+.modal-backdrop .fade .in {
+opacity: 0.5 !important;
+}
+
+
+.modal-backdrop.fade {
+    opacity: 0.5 !important;
+}

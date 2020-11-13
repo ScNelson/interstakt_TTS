@@ -1,0 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #373B40;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.aboutTitle {
+    font-size: 36px;
+}
