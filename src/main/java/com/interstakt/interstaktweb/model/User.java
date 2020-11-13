@@ -50,6 +50,10 @@ public class User {
     @NotEmpty(message = "Please provide your last name")
     private String lastName;
 
+    private String bioDescription;
+
+    private String bioImage;
+
     private int active;
 
     @CreationTimestamp
