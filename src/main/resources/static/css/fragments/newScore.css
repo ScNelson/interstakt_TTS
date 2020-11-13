@@ -1,0 +1,14 @@
+.modal-header {
+    background-color: black;
+    color: #2DFF0C;
+}
+
+.modal-body {
+    background-color: #373B40;
+    color: #2DFF0C;
+}
+
+.modal-footer {
+    background-color: black;
+    color: white;
+}
