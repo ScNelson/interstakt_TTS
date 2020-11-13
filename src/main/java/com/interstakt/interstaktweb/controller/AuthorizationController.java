@@ -22,6 +22,16 @@ public class AuthorizationController {
     public String login(){
         return "login";
     }
+
+    @GetMapping(value = "/")
+    public String index() {
+        return "main";
+    }
+
+    @GetMapping(value = "/about")
+    public String about() {
+        return "about";
+    }
     
     @GetMapping(value="/signup")
     public String registration(Model model){
