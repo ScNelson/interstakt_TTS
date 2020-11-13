@@ -24,7 +24,7 @@ public class ScoreController {
     @Autowired
     private ScoreService scoreService;
     
-    @GetMapping(value= {"/scores", "/"})
+    @GetMapping(value= {"/scores"})
     public String getScores(Model model){
         List<Score> scores = scoreService.findAll();
         User user = userService.getLoggedInUser();
