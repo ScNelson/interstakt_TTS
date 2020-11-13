@@ -25,20 +25,22 @@ public class ScoreController {
     private ScoreService scoreService;
     
     @GetMapping(value= {"/scores", "/"})
-    public String getFeed(Model model){
+    public String getScores(Model model){
         List<Score> scores = scoreService.findAll();
+        User user = userService.getLoggedInUser();
         model.addAttribute("scoreList", scores);
+        model.addAttribute("user", user);
         return "scores";
     }
     
     @GetMapping(value = "/scores/new")
-    public String getTweetForm(Model model) {
+    public String getScoreForm(Model model) {
         model.addAttribute("score", new Score());
         return "newScore";
     }
     
     @PostMapping(value = "/scores")
-    public String submitTweetForm(@Valid Score score, BindingResult bindingResult, Model model) {
+    public String submitScoreForm(@Valid Score score, BindingResult bindingResult, Model model) {
         User user = userService.getLoggedInUser();
         if (!bindingResult.hasErrors()) {
             score.setUser(user);
