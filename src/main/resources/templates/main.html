@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="fragments/styling :: headStyles"></div>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="loadedPage">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-sm-7">
+                    <div class="leftBodyDiv">
+                        <div class="siteDescriptionDiv">
+                            <p class="siteDescriptionTitle">Compose interactive music systems with Interstakt</p>
+                            <p class="siteDescriptionBody">Build hierarchical music structures, interface controllers,
+                                customize mappings, and create interactions for all-in-one performance systems</p>
+                        </div>
+                        <div class="buttonDiv">
+                            <!-- Button trigger modal 
+                            <button type="button" class="btn interstaktButton" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                                LOGIN
+                            </button>
+                            -->
+                            <a th:href="@{/login}">
+                                <button class="btn interstaktButton">LOGIN</button>
+                            </a>
+                            <a th:href="@{/about}">
+                                <button class="btn interstaktButton">ABOUT</button>
+                            </a>
+                            <button class="btn interstaktButton">DEMOS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-5">
+                    <div class="logoDiv">
+                        <img class="interstaktLogo" src="images/InterstaktLogo_FixedRound.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer"></div>
+    </div>
+</body>
