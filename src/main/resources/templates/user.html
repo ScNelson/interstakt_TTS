@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- nav bar -->
+        <div th:replace="fragments/navbar"></div>
+        <!-- User profile page begins -->
+        <h2>Profile for <span th:text="${user.firstName}"></span>
+            <span th:text="${user.lastName}"></span> - <span style="color: #00aced">
+                @<span th:text="${user.username}"></span></span></h2>
+        <h5>Joined <span th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5>
+    </div>
+</body>
