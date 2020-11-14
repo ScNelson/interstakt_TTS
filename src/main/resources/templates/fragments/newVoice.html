@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="/css/fragments/newScore.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:fragment="newVoice">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">New Voice</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-signin" th:action="@{/score/{title} (title=${score.title})}" th:object="${voice}" method="post" autocomplete="off">
+                        <div class="modal-body">
+                            <p>
+                                <label for="title" class="sr-only">Voice Name</label>
+                                <input th:field="*{name}" class="form-control" th:placeholder="Name" required>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">CREATE</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
