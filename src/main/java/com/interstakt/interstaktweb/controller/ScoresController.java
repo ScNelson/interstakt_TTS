@@ -40,15 +40,6 @@ public class ScoresController {
         addScoresAttributes(model);
         return "scores";
     }
-
-    @GetMapping(value= {"/score/{title}"})
-    public String getScoreWithID(@PathVariable String title, Model model){
-        User user = userService.getLoggedInUser();
-        Score score = scoreService.find(title);
-        model.addAttribute("user", user);
-        model.addAttribute("score", score);
-        return "score";
-    }
     
     @GetMapping(value = "/scores/new")
     public String getScoreForm(Model model) {
