@@ -60,7 +60,7 @@ public class ScoresController {
     }
 
     @RequestMapping(value = "/scores/delete/{id}")
-    public String deletePostWithID(@PathVariable Long id, Score score, Model model) {
+    public String deleteScoreWithID(@PathVariable Long id, Score score, Model model) {
         scoreService.delete(id);
         addScoresAttributes(model);
         

@@ -61,7 +61,7 @@ public class ScoreController {
     }
 
     @RequestMapping(value = "/score/{title}/delete/{id}")
-    public String deletePostWithID(@PathVariable String title, @PathVariable Long id, Model model) {
+    public String deleteVoiceWithID(@PathVariable String title, @PathVariable Long id, Model model) {
         voiceService.delete(id);
 
         Score score = scoreService.find(title);
