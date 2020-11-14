@@ -33,4 +33,35 @@ public class Scene {
 	@JoinColumn(name = "voice_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private Voice voice;
+
+    public Scene() {}
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public Voice getVoice() {
+        return voice;
+    }
+
+    public void setVoice(Voice voice) {
+        this.voice = voice;
+    }
+    
+    public Long getId() {
+        return this.id;
+    }
+    
 }
