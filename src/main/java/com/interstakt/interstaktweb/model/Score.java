@@ -26,6 +26,8 @@ public class Score {
 	@JoinColumn(name = "user_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
+
+    private String title;
     
     @CreationTimestamp
     private Date createdAt;
@@ -35,6 +37,10 @@ public class Score {
     public Score(User user, Date createdAt) {
         this.user = user;
         this.createdAt = createdAt;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public User getUser() {
@@ -53,8 +59,16 @@ public class Score {
         this.createdAt = createdAt;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
-        return "Score [createdAt=" + createdAt + ", user=" + user + "]";
+        return "Score [createdAt=" + createdAt + ", title=" + title + ", user=" + user + "]";
     }
 }
