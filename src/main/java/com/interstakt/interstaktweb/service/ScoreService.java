@@ -14,6 +14,11 @@ public class ScoreService {
     @Autowired
     private ScoreRepository scoreRepository;
 
+    public Score find(String title) {
+        Score score = scoreRepository.findByTitle(title);
+        return score;
+    }
+
     public List<Score> findAll() {
         List<Score> scores = scoreRepository.findAllByOrderByCreatedAtDesc();
         return scores;
