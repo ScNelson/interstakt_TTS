@@ -19,17 +19,29 @@ public class AuthorizationController {
     private UserService userService;
 
     @GetMapping(value="/login")
-    public String login(){
+    public String login(Model model){
+        User user = userService.getLoggedInUser();
+        if (userService.getLoggedInUser() != null) {
+            model.addAttribute("user", user);
+        }
         return "login";
     }
 
     @GetMapping(value = "/")
-    public String index() {
+    public String index(Model model) {
+        User user = userService.getLoggedInUser();
+        if (userService.getLoggedInUser() != null) {
+            model.addAttribute("user", user);
+        }
         return "main";
     }
 
     @GetMapping(value = "/about")
-    public String about() {
+    public String about(Model model) {
+        User user = userService.getLoggedInUser();
+        if (userService.getLoggedInUser() != null) {
+            model.addAttribute("user", user);
+        }
         return "about";
     }
     
