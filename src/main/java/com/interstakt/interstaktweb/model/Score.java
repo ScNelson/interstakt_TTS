@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
