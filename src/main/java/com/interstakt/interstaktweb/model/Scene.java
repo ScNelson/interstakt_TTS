@@ -1,5 +1,7 @@
 package com.interstakt.interstaktweb.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -33,6 +36,11 @@ public class Scene {
 	@JoinColumn(name = "voice_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private Voice voice;
+
+    private String name;
+
+    @CreationTimestamp
+    private Date createdAt;
 
     public Scene() {}
 
@@ -62,6 +70,22 @@ public class Scene {
     
     public Long getId() {
         return this.id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
     
 }
