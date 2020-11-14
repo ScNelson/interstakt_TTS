@@ -9,9 +9,23 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-    
+        <h1 th:text=${score.title}>Voices</h1>
+        <h3>Voices</h3>
+        <ul class="list-group" th:each="voice:${voiceList}">
+            <li class="list-group-item">
+                <a th:href="@{/score/{title}(title=${score.title})}">
+                    <span th:text="${voice.name}"></span>
+                </a>
+                <a href="#" th:href="@{../../score/{title}/delete/{id}(title=${score.title}, id=${voice.id})}">
+                    <button class="btn btn-outline-danger postAlterButton">Delete</button>
+                </a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New
+            Voice</button>
     </div>
-    <div th:replace="fragments/newScore"></div>
+    <div th:replace="fragments/newVoice"></div>
     <div th:replace="fragments/footer"></div>
 </body>
+
 </html>
