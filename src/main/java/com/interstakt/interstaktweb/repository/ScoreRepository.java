@@ -13,4 +13,6 @@ public interface ScoreRepository extends CrudRepository<Score, Long> {
     List<Score> findAllByOrderByCreatedAtDesc();
 
     List<Score> findAllByUserOrderByCreatedAtDesc(User user);
+
+    Score findByTitle(String title);
 }
