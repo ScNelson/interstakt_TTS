@@ -9,12 +9,28 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-        <div th:if="${not #lists.isEmpty(scoreList)}">
-            <h3>Scores</h3>
-        </div>
-        <div th:if="${#lists.isEmpty(scoreList)}">
-            <h3>You have not created any Scores</h3>
+        <div>
+            <div th:if="${not #lists.isEmpty(scoreList)}">
+                <h3>Scores</h3>
+                <ul class="list-group" th:each="score:${scoreList}">
+                    <li class="list-group-item">
+                        <a th:href="@{/score/{title}(title=${score.title})}">
+                            <span th:text="${score.title}"></span>
+                        </a>
+                        <a href="#" th:href="@{../../scores/delete/{id}(id=${score.id})}">
+                            <button class="btn btn-outline-danger postAlterButton">Delete</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${#lists.isEmpty(scoreList)}">
+                <h3>You have not created any Scores</h3>
+            </div>
+            <button class="btn btn-outline-light" type="button" data-toggle="modal"
+            data-target="#exampleModalCenter">New Score</button>
         </div>
     </div>
+    <div th:replace="fragments/newScore"></div>
+    <div th:replace="fragments/footer"></div>
 </body>
 </html>
