@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div sec:authorize="isAuthenticated()" th:replace="fragments/navbar :: navbar"></div>
     <div id="loader"></div>
     <div id="loadedPage">
         <div class="container-fluid">
