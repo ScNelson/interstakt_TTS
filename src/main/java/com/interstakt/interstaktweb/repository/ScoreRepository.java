@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ScoreRepository extends CrudRepository<Score, Long> {
     List<Score> findAllByOrderByCreatedAtDesc();
 
-    List<Score> findAllByUserOrderByCreatedAtDesc(User user);
+    List<Score> findAllByComposerOrderByCreatedAtDesc(User user);
 
     Score findByTitle(String title);
 }
