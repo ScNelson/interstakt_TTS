@@ -16,7 +16,7 @@ public interface SceneRepository extends CrudRepository<Scene, Long> {
 
     List<Scene> findAllByOrderByCreatedAtDesc();
 
-    List<Scene> findAllByUserOrderByCreatedAtDesc(User user);
+    List<Scene> findAllByComposerOrderByCreatedAtDesc(User user);
 
     List<Scene> findAllByScoreOrderByCreatedAtDesc(Score score);
 
