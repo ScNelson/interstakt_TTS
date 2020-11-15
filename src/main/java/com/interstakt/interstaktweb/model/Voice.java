@@ -34,6 +34,7 @@ public class Voice {
     private Score score;
 
     @OneToMany(mappedBy = "voice") 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Scene> scenes;
 
     private String name;
