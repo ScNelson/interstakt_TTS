@@ -42,6 +42,7 @@ public class ScoreController {
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
         model.addAttribute("voiceList", voices);
+        model.addAttribute("level", "score");
         return "score";
     }
 
@@ -57,6 +58,7 @@ public class ScoreController {
         model.addAttribute("score", score);
         model.addAttribute("voice", newVoice);
         model.addAttribute("voiceList", voices);
+        model.addAttribute("level", "score");
         return "score";
     }
 
@@ -71,6 +73,7 @@ public class ScoreController {
         model.addAttribute("score", score);
         model.addAttribute("voice", newVoice);
         model.addAttribute("voiceList", voices);
+        model.addAttribute("level", "score");
         return "score";
     }
 }
