@@ -31,9 +31,8 @@ public class ScoreController {
 
     @Autowired
     private VoiceService voiceService;
-   
-    @GetMapping(value= {"/score/{title}"})
-    public String getScoreWithID(@PathVariable String title, Model model){
+
+    public void addScoreAttributes(String title, Model model){
         User user = userService.getLoggedInUser();
         Score score = scoreService.find(title);
         List<Voice> voices = voiceService.findAllByScore(score);
@@ -43,6 +42,11 @@ public class ScoreController {
         model.addAttribute("voice", voice);
         model.addAttribute("voiceList", voices);
         model.addAttribute("level", "score");
+    }
+   
+    @GetMapping(value= {"/score/{title}"})
+    public String getScoreWithID(@PathVariable String title, Model model){
+        addScoreAttributes(title, model);
         return "score";
     }
 
@@ -52,13 +56,7 @@ public class ScoreController {
         voice.setScore(score);
         voice.setUser(score.getUser());
         voiceService.save(voice);
-        Voice newVoice = new Voice();
-        List<Voice> voices = voiceService.findAllByScore(score);
-        model.addAttribute("user", score.getUser());
-        model.addAttribute("score", score);
-        model.addAttribute("voice", newVoice);
-        model.addAttribute("voiceList", voices);
-        model.addAttribute("level", "score");
+        addScoreAttributes(title, model);
         return "score";
     }
 
@@ -66,14 +64,7 @@ public class ScoreController {
     public String deleteVoiceWithID(@PathVariable String title, @PathVariable Long id, Model model) {
         voiceService.delete(id);
 
-        Score score = scoreService.find(title);
-        Voice newVoice = new Voice();
-        List<Voice> voices = voiceService.findAllByScore(score);
-        model.addAttribute("user", score.getUser());
-        model.addAttribute("score", score);
-        model.addAttribute("voice", newVoice);
-        model.addAttribute("voiceList", voices);
-        model.addAttribute("level", "score");
+        addScoreAttributes(title, model);
         return "score";
     }
 }
