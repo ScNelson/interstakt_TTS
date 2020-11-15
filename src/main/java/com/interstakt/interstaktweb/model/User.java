@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -63,6 +65,9 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "composer") 
+    private List<Score> scores; 
+
     public User() {}
 
     public User(
@@ -71,7 +76,7 @@ public class User {
             @Length(min = 5, message = "Your password must have at least 5 characters") @NotEmpty(message = "Please provide a password") String password,
             @NotEmpty(message = "Please provide your first name") String firstName,
             @NotEmpty(message = "Please provide your last name") String lastName, String bioDescription,
-            String bioImage, int active, Date createdAt, Set<Role> roles) {
+            String bioImage, int active, Date createdAt, Set<Role> roles, List<Score> scores) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -82,6 +87,7 @@ public class User {
         this.active = active;
         this.createdAt = createdAt;
         this.roles = roles;
+        this.scores = scores;
     }
 
     public String getEmail() {
@@ -164,10 +170,18 @@ public class User {
         this.roles = roles;
     }
 
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
+
     @Override
     public String toString() {
-        return "User [active=" + active + ", bioDescription=" + bioDescription + ", bioImage=" + bioImage
-                + ", createdAt=" + createdAt + ", email=" + email + ", firstName=" + firstName + ", lastName="
-                + lastName + ", password=" + password + ", roles=" + roles + ", username=" + username + "]";
+        return "User [bioDescription=" + bioDescription + ", bioImage=" + bioImage + ", createdAt=" + createdAt
+                + ", email=" + email + ", firstName=" + firstName + ", id=" + id + ", lastName=" + lastName
+                + ", password=" + password + ", roles=" + roles + ", scores=" + scores + ", username=" + username + "]";
     }
 }
