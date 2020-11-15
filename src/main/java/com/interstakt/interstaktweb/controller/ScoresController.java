@@ -26,7 +26,7 @@ public class ScoresController {
     @Autowired
     private ScoreService scoreService;
 
-    public void addScoresAttributes(Model model){
+    public void addComposerAttributes(Model model){
         List<Score> scores = scoreService.findAll();
         Score score = new Score();
         User user = userService.getLoggedInUser();
@@ -37,7 +37,7 @@ public class ScoresController {
     
     @GetMapping(value= {"/scores"})
     public String getScores(Model model){
-        addScoresAttributes(model);
+        addComposerAttributes(model);
         return "scores";
     }
     
@@ -54,7 +54,7 @@ public class ScoresController {
             score.setUser(user);
             scoreService.save(score);
             model.addAttribute("successMessage", "Score successfully created!");
-            addScoresAttributes(model);
+            addComposerAttributes(model);
         }
         return "scores";
     }
@@ -62,7 +62,7 @@ public class ScoresController {
     @RequestMapping(value = "/scores/delete/{id}")
     public String deleteScoreWithID(@PathVariable Long id, Score score, Model model) {
         scoreService.delete(id);
-        addScoresAttributes(model);
+        addComposerAttributes(model);
         
         return "scores";
     }
