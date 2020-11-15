@@ -46,8 +46,9 @@ public class VoiceController {
         model.addAttribute("user", user);
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
-        model.addAttribute("voiceList", sceneList);
+        model.addAttribute("sceneList", sceneList);
         model.addAttribute("scene", scene);
+        model.addAttribute("level", "voice");
         return "voice";
     }
 
@@ -55,8 +56,8 @@ public class VoiceController {
     public String submitSceneForm(@Valid Scene scene, @PathVariable String title, @PathVariable String name, BindingResult bindingResult, Model model) {
         Score score = scoreService.find(title);
         Voice voice = voiceService.find(name);
-        scene.setScore(score);
-        scene.setUser(score.getUser());
+        scene.setScore(voice.getScore());
+        scene.setUser(voice.getUser());
         scene.setVoice(voice);
         sceneService.save(scene);
         Scene newScene = new Scene();
@@ -66,6 +67,7 @@ public class VoiceController {
         model.addAttribute("voice", voice);
         model.addAttribute("scene", newScene);
         model.addAttribute("sceneList", scenes);
+        model.addAttribute("level", "voice");
         return "voice";
     }
 
@@ -82,6 +84,7 @@ public class VoiceController {
         model.addAttribute("voice", voice);
         model.addAttribute("scene", newScene);
         model.addAttribute("sceneList", sceneList);
+        model.addAttribute("level", "voice");
         return "voice";
     }
 }
