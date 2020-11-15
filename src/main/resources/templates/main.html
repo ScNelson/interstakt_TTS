@@ -26,7 +26,7 @@
                                 LOGIN
                             </button>
                             -->
-                            <a th:href="@{/login}">
+                            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
                                 <button class="btn interstaktButton">LOGIN</button>
                             </a>
                             <a th:href="@{/about}">
