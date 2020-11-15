@@ -35,39 +35,40 @@ public class VoiceController {
 
     @Autowired
     private SceneService sceneService;
-   
-    @GetMapping(value= {"/score/{title}/{name}"})
-    public String getVoiceWithID(@PathVariable String title, @PathVariable String name, Model model){
+
+    public void addVoiceAttributes(String title, String name, Model model){
         User user = userService.getLoggedInUser();
         Score score = scoreService.find(title);
         Voice voice = voiceService.find(name);
         List<Scene> sceneList = sceneService.findAllByVoice(voice);
+        
         Scene scene = new Scene();
+
         model.addAttribute("user", user);
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
-        model.addAttribute("sceneList", sceneList);
         model.addAttribute("scene", scene);
+        model.addAttribute("sceneList", sceneList);
         model.addAttribute("level", "voice");
+    }
+   
+    @GetMapping(value= {"/score/{title}/{name}"})
+    public String getVoiceWithID(@PathVariable String title, @PathVariable String name, Model model){
+        addVoiceAttributes(title, name, model);
+
         return "voice";
     }
 
     @PostMapping(value = "/score/{title}/{name}")
     public String submitSceneForm(@Valid Scene scene, @PathVariable String title, @PathVariable String name, BindingResult bindingResult, Model model) {
-        Score score = scoreService.find(title);
         Voice voice = voiceService.find(name);
         scene.setScore(voice.getScore());
         scene.setUser(voice.getUser());
         scene.setVoice(voice);
         sceneService.save(scene);
-        Scene newScene = new Scene();
-        List<Scene> scenes = sceneService.findAllByVoice(voice);
-        model.addAttribute("user", score.getUser());
-        model.addAttribute("score", score);
-        model.addAttribute("voice", voice);
-        model.addAttribute("scene", newScene);
-        model.addAttribute("sceneList", scenes);
-        model.addAttribute("level", "voice");
+
+        addVoiceAttributes(title, name, model);
+        
         return "voice";
     }
 
@@ -75,16 +76,7 @@ public class VoiceController {
     public String deleteSceneWithID(@PathVariable String title, @PathVariable String name, @PathVariable Long id, Model model) {
         sceneService.delete(id);
 
-        Score score = scoreService.find(title);
-        Voice voice = voiceService.find(name);
-        Scene newScene = new Scene();
-        List<Scene> sceneList = sceneService.findAllByVoice(voice);
-        model.addAttribute("user", score.getUser());
-        model.addAttribute("score", score);
-        model.addAttribute("voice", voice);
-        model.addAttribute("scene", newScene);
-        model.addAttribute("sceneList", sceneList);
-        model.addAttribute("level", "voice");
+        addVoiceAttributes(title, name, model);
         return "voice";
     }
 }
