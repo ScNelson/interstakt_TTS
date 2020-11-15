@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="scorePath">
+        <h5>Path</h5>
+        <ul>
+            <li>
+                <a th:href="@{/score/{title} (title=${score.title})}" th:text="${score.title}"></a>
+            </li>
+            <li>
+                <p th:if="${level == 'voice'}" th:text="${voice.name}"></p>
+                <a th:if="${level == 'scene'}" th:href="@{/score/{title}/{name} (title=${score.title}, name=${voice.name})}" th:text="${voice.name}"></a>
+            </li>
+            <li th:unless="${level == 'voice'}">
+                <a th:text="${scene.name}"></a>
+            </li>
+        </ul>       
+    </div>
+</body>
+
+</html>
