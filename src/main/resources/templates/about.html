@@ -7,13 +7,15 @@
 </head>
 
 <body>
-    <div sec:authorize="isAuthenticated()" th:replace="fragments/navbar :: navbar"></div>
-    <div id="loader"></div>
-    <div id="loadedPage">
-        <p class="aboutTitle">About</p>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <div id="loader"></div>
+        <div id="loadedPage">
+            <p class="aboutTitle">About</p>
+        </div>
+        <div th:replace="fragments/footer"></div>
+        </div>
+        <div th:replace="fragments/footer"></div>
     </div>
-    <div th:replace="fragments/footer"></div>
-    </div>
-    <div th:replace="fragments/footer"></div>
 </body>
 </html>
