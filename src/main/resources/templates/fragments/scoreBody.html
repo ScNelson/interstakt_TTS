@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="/css/fragments/scoreBody.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:fragment="scoreBody">
+        <div class="scoreBodyDiv">
+            <div class="score-image-div">
+                <img class="score-image" src="https://i.pinimg.com/originals/04/bc/b5/04bcb52b7eb3bd42c68195133931f15a.gif" alt="">
+            </div>
+            <div class="score-info">
+                <div class="scoreTitleDiv">
+                    <a th:href="@{/score/{title}(title=${score.title})}">
+                        <h3 th:text="${score.title}" class="scoreTitle"></h3>
+                    </a>
+                    <p th:text="${score.createdTimestamp}" class="scoreTimestamp"></p>
+                </div>
+
+                <div class="scoreTagDiv">
+                    <p class="scoreTagTitle">Tags: </p>
+                    <!--
+                    <div class="scoreTag" th:each="tag:${score.tags}">
+                        <a class="card-text" th:text="${tag.phrase}" th:href="@{../../blogpostss/tags/{id}(id=${tag.phrase})}"></a>
+                    </div>
+                    -->
+                </div>
+                <div class="card-footer">
+                    <a href="#">
+                        <button class="btn btn-outline-light scoreAlterButton">Edit</button>
+                    </a>
+                    <a href="#" th:href="@{../../scores/delete/{id}(id=${score.id})}">
+                        <button class="btn btn-outline-danger scoreAlterButton">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
