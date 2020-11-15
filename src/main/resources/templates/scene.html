@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <div th:replace="fragments/styling :: headStyles"></div>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <div th:replace="fragments/scorePath :: scorePath"></div>
+        <h1 th:text=${scene.name}></h1>
+        <h3>Scenes</h3>
+        <ul class="list-group" th:each="scene:${sceneList}">
+            <li class="list-group-item">
+                <a th:href="@{/score/{title}/{name}(title=${score.title}, name=${voice.name})}">
+                    <span th:text="${scene.name}"></span>
+                </a>
+                <a href="#" th:href="@{../../score/{title}/{name}/delete/{id}(title=${score.title}, name=${voice.name}, id=${scene.id})}">
+                    <button class="btn btn-outline-danger postAlterButton">Delete</button>
+                </a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New
+            Scene</button>
+    </div>
+    <div th:replace="fragments/newScene"></div>
+    <div th:replace="fragments/footer"></div>
+</body>
+
+</html>
