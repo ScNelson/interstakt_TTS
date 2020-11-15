@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
@@ -23,9 +25,9 @@ public class Scene {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "composer_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
+    private User composer;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "score_id")
@@ -37,6 +39,9 @@ public class Scene {
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private Voice voice;
 
+    @OneToMany(mappedBy = "scene") 
+    private List<Scene> scenes;
+
     private String name;
 
     @CreationTimestamp
@@ -45,11 +50,11 @@ public class Scene {
     public Scene() {}
 
     public User getUser() {
-        return user;
+        return composer;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.composer = user;
     }
 
     public Score getScore() {
