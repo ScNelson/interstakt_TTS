@@ -26,7 +26,7 @@ public class VoiceService {
     }
 
     public List<Voice> findAllByUser(User user) {
-        List<Voice> voices = voiceRepository.findAllByUserOrderByCreatedAtDesc(user);
+        List<Voice> voices = voiceRepository.findAllByComposerOrderByCreatedAtDesc(user);
         return voices;
     }
 
