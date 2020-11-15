@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
@@ -23,19 +25,24 @@ public class Score {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "composer_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
+    private User composer;
+
+    @OneToMany(mappedBy = "score") 
+    private List<Voice> voices;
 
     private String title;
     
     @CreationTimestamp
     private Date createdAt;
-    
+
     public Score() {}
 
-    public Score(User user, Date createdAt) {
-        this.user = user;
+    public Score(User user, List<Voice> voices, String title, Date createdAt) {
+        this.composer = user;
+        this.voices = voices;
+        this.title = title;
         this.createdAt = createdAt;
     }
 
@@ -44,19 +51,19 @@ public class Score {
     }
 
     public User getUser() {
-        return user;
+        return composer;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.composer = user;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public List<Voice> getVoices() {
+        return voices;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setVoices(List<Voice> voices) {
+        this.voices = voices;
     }
 
     public String getTitle() {
@@ -67,8 +74,16 @@ public class Score {
         this.title = title;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
-        return "Score [createdAt=" + createdAt + ", title=" + title + ", user=" + user + "]";
+        return "Score [createdAt=" + createdAt + ", title=" + title + ", user=" + composer + ", voices=" + voices + "]";
     }
 }
