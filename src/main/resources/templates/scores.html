@@ -3,7 +3,7 @@
 
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/scores.css">
 </head>
 
 <body>
@@ -11,23 +11,20 @@
     <div class="container">
         <div>
             <div th:if="${not #lists.isEmpty(scoreList)}">
-                <h3>Scores</h3>
-                <ul class="list-group" th:each="score:${scoreList}">
-                    <li class="list-group-item">
-                        <a th:href="@{/score/{title}(title=${score.title})}">
-                            <span th:text="${score.title}"></span>
-                        </a>
-                        <a href="#" th:href="@{../../scores/delete/{id}(id=${score.id})}">
-                            <button class="btn btn-outline-danger postAlterButton">Delete</button>
-                        </a>
-                    </li>
-                </ul>
+                <div class="scores-head">
+                    <h1 class="scores-title">Scores</h1>
+                    <button class="btn btn-outline-light new-score-btn" type="button" data-toggle="modal"
+                        data-target="#exampleModalCenter">New Score</button>
+                </div>
+                <div th:each="score:${scoreList}">
+                    <div class="panel panel-default score-panel">
+                        <div th:replace="fragments/scoreBody"></div>
+                    </div>
+                </div>
             </div>
             <div th:if="${#lists.isEmpty(scoreList)}">
-                <h3>You have not created any Scores</h3>
+                <h1>You have not created any Scores</h1>
             </div>
-            <button class="btn btn-outline-light" type="button" data-toggle="modal"
-            data-target="#exampleModalCenter">New Score</button>
         </div>
     </div>
     <div th:replace="fragments/newScore"></div>
