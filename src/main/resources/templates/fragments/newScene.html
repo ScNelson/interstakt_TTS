@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div th:fragment="newVoice">
+    <div th:fragment="newScene">
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -18,7 +18,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="form-signin" th:action="@{/score/{title} (title=${score.title})}" th:object="${voice}" method="post" autocomplete="off">
+                    <form class="form-signin" th:action="@{/score/{title}/{name} (title=${score.title}, name=${voice.name})}" th:object="${scene}" method="post" autocomplete="off">
                         <div class="modal-body">
                             <p>
                                 <label for="title" class="sr-only">Scene Name</label>
