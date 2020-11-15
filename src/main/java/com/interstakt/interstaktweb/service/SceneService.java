@@ -17,6 +17,10 @@ public class SceneService {
     @Autowired
     private SceneRepository sceneRepository;
 
+    public Scene find(String name) {
+        Scene scene = sceneRepository.findByName(name);
+        return scene;
+    }
 
     public List<Scene> findAll() {
         List<Scene> scenes = sceneRepository.findAllByOrderByCreatedAtDesc();
@@ -24,7 +28,7 @@ public class SceneService {
     }
 
     public List<Scene> findAllByUser(User user) {
-        List<Scene> scenes = sceneRepository.findAllByUserOrderByCreatedAtDesc(user);
+        List<Scene> scenes = sceneRepository.findAllByComposerOrderByCreatedAtDesc(user);
         return scenes;
     }
 
