@@ -1,0 +1,31 @@
+.side-profile-div {
+    display: inline;
+    width: 200px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.profile-content {
+    position: relative;
+    margin-top: 20px;
+}
+
+.side-score-div {
+    display: inline-block;
+    text-align: center;
+    width: 28%;
+}
+
+.side-mid-div {
+    display: inline-block;
+    text-align: center;
+    border: white;
+    border-style: solid;
+    border-width: 0px 1px 0px 1px;
+    width: 34%;
+}
+
+.side-score-element {
+    display: block;
+    width: 100%;
+}
