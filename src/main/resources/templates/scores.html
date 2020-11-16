@@ -7,26 +7,32 @@
 </head>
 
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar"></div>
     <div class="container">
-        <div>
-            <div th:if="${not #lists.isEmpty(scoreList)}">
-                <div class="scores-head">
-                    <h1 class="scores-title">Scores</h1>
-                    <button class="btn btn-outline-light new-score-btn" type="button" data-toggle="modal"
-                        data-target="#exampleModalCenter">New Score</button>
-                </div>
-                <div th:each="score:${scoreList}">
-                    <div class="panel panel-default score-panel">
-                        <div th:replace="fragments/scoreBody"></div>
+        <div class="row d-flex justify-content-around">
+            <div th:replace="fragments/sideProfile" class="col"></div>
+            <div class="scores-div col">
+                <div th:if="${not #lists.isEmpty(scoreList)}">
+                    <div class="scores-head">
+                        <h1 class="scores-title">Scores</h1>
+                        <button class="btn btn-outline-light new-score-btn" type="button" data-toggle="modal"
+                            data-target="#exampleModalCenter">New Score</button>
+                        <button class="btn btn-outline-light new-score-btn" type="button">Search Levels</button>
+                    </div>
+                    <div class="scores-body">
+                        <div th:each="score:${scoreList}">
+                            <div class="panel panel-default score-panel">
+                                <div th:replace="fragments/scoreBody"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div th:if="${#lists.isEmpty(scoreList)}">
-                <h1>You have not created any Scores</h1>
+                <div th:if="${#lists.isEmpty(scoreList)}">
+                    <h1>You have not created any Scores</h1>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
     <div th:replace="fragments/newScore"></div>
     <div th:replace="fragments/footer"></div>
 </body>
