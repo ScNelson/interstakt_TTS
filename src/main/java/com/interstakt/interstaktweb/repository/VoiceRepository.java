@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface VoiceRepository extends CrudRepository<Voice, Long>{
     Voice findByName(String name);
 
+    List<Voice> findByScoreId(Long id);
+
     List<Voice> findAllByOrderByCreatedAtDesc();
 
     List<Voice> findAllByComposerOrderByCreatedAtDesc(User user);
