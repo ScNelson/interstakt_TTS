@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -43,6 +46,10 @@ public class Score {
 
     private String createdTimestamp;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "score_tag", joinColumns = @JoinColumn(name = "score_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
+
     public Score() {}
 
     public Score(User user, List<Voice> voices, String title, Date createdAt) {
@@ -73,12 +80,12 @@ public class Score {
         return id;
     }
 
-    public User getUser() {
+    public User getComposer() {
         return composer;
     }
 
-    public void setUser(User user) {
-        this.composer = user;
+    public void setComposer(User composer) {
+        this.composer = composer;
     }
 
     public List<Voice> getVoices() {
@@ -111,6 +118,18 @@ public class Score {
         return createdTimestamp;
     }
 
+    public void setCreatedTimestamp(String createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+    
     @Override
     public String toString() {
         return "Score [composer=" + composer + ", createdAt=" + createdAt + ", createdTimestamp=" + createdTimestamp

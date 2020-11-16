@@ -3,6 +3,7 @@ package com.interstakt.interstaktweb.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -42,6 +45,10 @@ public class Voice {
     @CreationTimestamp
     private Date createdAt;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "voice_tag", joinColumns = @JoinColumn(name = "voice_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
+
     public Voice() {}
 
     public Long getId() {
@@ -56,11 +63,11 @@ public class Voice {
         this.score = score;
     }
 
-    public User getUser() {
+    public User getComposer() {
         return composer;
     }
 
-    public void setUser(User user) {
+    public void setComposer(User user) {
         this.composer = user;
     }
 
@@ -79,5 +86,20 @@ public class Voice {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    
+
+    public List<Scene> getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(List<Scene> scenes) {
+        this.scenes = scenes;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 }
