@@ -56,7 +56,7 @@ public class ScoreController {
     public String submitVoiceForm(@Valid Voice voice, @PathVariable String title, BindingResult bindingResult, Model model) {
         Score score = scoreService.find(title);
         voice.setScore(score);
-        voice.setUser(score.getUser());
+        voice.setComposer(score.getComposer());
         voiceService.save(voice);
         addScoreAttributes(title, model);
         return "score";
