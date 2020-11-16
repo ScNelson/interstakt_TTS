@@ -3,6 +3,7 @@ package com.interstakt.interstaktweb.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -39,8 +42,12 @@ public class Scene {
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private Voice voice;
 
-    @OneToMany(mappedBy = "scene") 
-    private List<Scene> scenes;
+    // @OneToMany(mappedBy = "scene") 
+    // private List<Scene> scenes;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "scene_tag", joinColumns = @JoinColumn(name = "scene_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
 
     private String name;
 
@@ -49,12 +56,16 @@ public class Scene {
 
     public Scene() {}
 
-    public User getUser() {
+    public Long getId() {
+        return this.id;
+    }
+
+    public User getComposer() {
         return composer;
     }
 
-    public void setUser(User user) {
-        this.composer = user;
+    public void setComposer(User composer) {
+        this.composer = composer;
     }
 
     public Score getScore() {
@@ -72,10 +83,6 @@ public class Scene {
     public void setVoice(Voice voice) {
         this.voice = voice;
     }
-    
-    public Long getId() {
-        return this.id;
-    }
 
     public String getName() {
         return name;
@@ -91,6 +98,14 @@ public class Scene {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
     
 }
