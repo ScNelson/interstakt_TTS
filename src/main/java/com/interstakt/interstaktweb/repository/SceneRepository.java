@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface SceneRepository extends CrudRepository<Scene, Long> {
     Scene findByName(String name);
 
+    List<Scene> findByScoreId(Long id);
+
     List<Scene> findAllByOrderByCreatedAtDesc();
 
     List<Scene> findAllByComposerOrderByCreatedAtDesc(User user);
