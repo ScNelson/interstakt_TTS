@@ -31,6 +31,9 @@ public class ScoresController {
         Score score = new Score();
         User user = userService.getLoggedInUser();
         model.addAttribute("scoreList", scores);
+        model.addAttribute("scoreCount", scores.size());
+        model.addAttribute("voiceCount", userService.getVoiceCount(user));
+        model.addAttribute("sceneCount", userService.getSceneCount(user));
         model.addAttribute("score", score);
         model.addAttribute("user", user);
     }
@@ -64,6 +67,6 @@ public class ScoresController {
         scoreService.delete(id);
         addComposerAttributes(model);
         
-        return "scores";
+        return "redirect:/scores";
     }
 }
