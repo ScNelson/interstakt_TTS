@@ -41,6 +41,8 @@ public class ScoreController {
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
         model.addAttribute("voiceList", voices);
+        model.addAttribute("voiceCount", voices.size());
+        model.addAttribute("sceneCount", scoreService.sceneCount(score.getId()));
         model.addAttribute("level", "score");
     }
    
@@ -65,6 +67,6 @@ public class ScoreController {
         voiceService.delete(id);
 
         addScoreAttributes(title, model);
-        return "score";
+        return "redirect:/score/" + title;
     }
 }
