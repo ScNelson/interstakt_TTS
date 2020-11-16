@@ -7,7 +7,10 @@ import java.util.List;
 import com.interstakt.interstaktweb.model.Role;
 import com.interstakt.interstaktweb.model.User;
 import com.interstakt.interstaktweb.repository.RoleRepository;
+import com.interstakt.interstaktweb.repository.SceneRepository;
+import com.interstakt.interstaktweb.repository.ScoreRepository;
 import com.interstakt.interstaktweb.repository.UserRepository;
+import com.interstakt.interstaktweb.repository.VoiceRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +23,15 @@ public class UserService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private ScoreRepository scoreRepository;
+
+    @Autowired
+    private VoiceRepository voiceRepository;
+
+    @Autowired
+    private SceneRepository sceneRepository;
 
     @Autowired
     public UserService(UserRepository userRepository, 
@@ -55,5 +67,20 @@ public class UserService {
           getContext().getAuthentication().getName();
         
         return findByUsername(loggedInUsername);
+    }
+
+    public int getScoreCount(User user) {
+        int count = scoreRepository.findAllByComposerOrderByCreatedAtDesc(user).size();
+        return count;
+    }
+
+    public int getVoiceCount(User user) {
+        int count = voiceRepository.findAllByComposerOrderByCreatedAtDesc(user).size();
+        return count;
+    }
+
+    public int getSceneCount(User user) {
+        int count = sceneRepository.findAllByComposerOrderByCreatedAtDesc(user).size();
+        return count;
     }
 }
