@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="/css/fragments/sideProfile.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:fragment="sideProfile" class="side-profile-div">
+        <div>
+            <img src="https://cdn.iconscout.com/icon/free/png-256/user-avatar-contact-portfolio-personal-portrait-profile-1-5182.png" alt="" width="200px" height="200px">
+        </div>
+        <h4 href="">Name</h4>
+            <a href="">username</a>
+        <div class="profile-content">
+            <div class="side-score-div">
+                <h6 class="side-score-element">Scores</h6>
+                <a href="" class="side-score-element" th:text="${scoreCount}"></a>
+            </div>
+            <div class="side-mid-div">
+                <h6 class="side-score-element">Voices</h6>
+                <a href="" class="side-score-element" th:text="${voiceCount}"></a>
+            </div>
+            <div class="side-score-div">
+                <h6 class="side-score-element">Scenes</h6>
+                <a href="" class="side-score-element" th:text="${sceneCount}">Scenes</a>
+            </div>
+            <!--
+            <h5>Controllers</h5>
+            <a href="">Controllers</a>
+            -->
+        </div>
+        <div class="profile-footer">
+
+        </div>
+    </div>
+</body>
+
+</html>
