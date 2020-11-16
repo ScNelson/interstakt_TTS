@@ -47,7 +47,9 @@ public class VoiceController {
         model.addAttribute("user", user);
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
+        model.addAttribute("voiceCount", score.getVoiceCount());
         model.addAttribute("scene", scene);
+        model.addAttribute("sceneCount", sceneList.size());
         model.addAttribute("sceneList", sceneList);
         model.addAttribute("level", "voice");
     }
@@ -77,6 +79,6 @@ public class VoiceController {
         sceneService.delete(id);
 
         addVoiceAttributes(title, name, model);
-        return "voice";
+        return "redirect:/score/" + title + "/" + name;
     }
 }
