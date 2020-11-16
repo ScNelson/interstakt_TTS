@@ -54,7 +54,7 @@ public class ScoresController {
     public String submitScoreForm(@Valid Score score, BindingResult bindingResult, Model model) {
         User user = userService.getLoggedInUser();
         if (!bindingResult.hasErrors()) {
-            score.setUser(user);
+            score.setComposer(user);
             scoreService.save(score);
             model.addAttribute("successMessage", "Score successfully created!");
             addComposerAttributes(model);

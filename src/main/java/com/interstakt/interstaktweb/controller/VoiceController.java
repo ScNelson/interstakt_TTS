@@ -47,7 +47,7 @@ public class VoiceController {
         model.addAttribute("user", user);
         model.addAttribute("score", score);
         model.addAttribute("voice", voice);
-        model.addAttribute("voiceCount", score.getVoiceCount());
+        model.addAttribute("voiceCount", scoreService.voiceCount(score.getId()));
         model.addAttribute("scene", scene);
         model.addAttribute("sceneCount", sceneList.size());
         model.addAttribute("sceneList", sceneList);
@@ -65,7 +65,7 @@ public class VoiceController {
     public String submitSceneForm(@Valid Scene scene, @PathVariable String title, @PathVariable String name, BindingResult bindingResult, Model model) {
         Voice voice = voiceService.find(name);
         scene.setScore(voice.getScore());
-        scene.setUser(voice.getUser());
+        scene.setComposer(voice.getComposer());
         scene.setVoice(voice);
         sceneService.save(scene);
 
