@@ -18,30 +18,28 @@ public class AuthorizationController {
 	@Autowired
     private UserService userService;
 
-    @GetMapping(value="/login")
-    public String login(Model model){
+    public void checkLoggedIn(Model model) {
         User user = userService.getLoggedInUser();
         if (userService.getLoggedInUser() != null) {
             model.addAttribute("user", user);
-        }
+        } 
+    }
+
+    @GetMapping(value="/login")
+    public String login(Model model){
+        checkLoggedIn(model);
         return "login";
     }
 
     @GetMapping(value = "/")
     public String index(Model model) {
-        User user = userService.getLoggedInUser();
-        if (userService.getLoggedInUser() != null) {
-            model.addAttribute("user", user);
-        }
+        checkLoggedIn(model);
         return "main";
     }
 
     @GetMapping(value = "/about")
     public String about(Model model) {
-        User user = userService.getLoggedInUser();
-        if (userService.getLoggedInUser() != null) {
-            model.addAttribute("user", user);
-        }
+        checkLoggedIn(model);
         return "about";
     }
     
