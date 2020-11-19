@@ -3,7 +3,7 @@
 
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/score.css">
 </head>
 
 <body>
@@ -12,18 +12,19 @@
         <div th:replace="fragments/scorePath :: scorePath"></div>
         <h1 th:text=${voice.name}></h1>
         <h3>Scenes</h3>
-        <ul class="list-group" th:each="scene:${sceneList}">
-            <li class="list-group-item">
-                <a th:href="@{/score/{title}/{name}/{sceneName}(title=${score.title}, name=${voice.name}, sceneName=${scene.name})}">
-                    <span th:text="${scene.name}"></span>
-                </a>
-                <a href="#" th:href="@{../../score/{title}/{name}/delete/{id}(title=${score.title}, name=${voice.name}, id=${scene.id})}">
-                    <button class="btn btn-outline-danger postAlterButton">Delete</button>
-                </a>
-            </li>
-        </ul>
-        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New
-            Scene</button>
+        <div>
+            <ul class="list-inline list-group-horizontal" th:each="scene:${sceneList}">
+                <li class="list-group-item">
+                    <a th:href="@{/{username}/score/{title}/{voiceName}/{sceneName}/{scoreId}-{voiceId}-{sceneId} (username=${user.username}, title=${score.title}, voiceName=${voice.name}, sceneName=${scene.name}, scoreId=${score.id}, voiceId=${voice.id}, sceneId=${scene.id})}">
+                        <span th:text="${scene.name}"></span>
+                    </a>
+                    <a href="#" th:href="@{/{username}/score/{title}/{name}/delete/{scoreId}-{voiceId}-{sceneId}(username=${user.username}, title=${score.title}, name=${voice.name}, scoreId=${score.id}, voiceId=${voice.id}, sceneId = ${scene.id})}">
+                        <button class="btn btn-outline-danger postAlterButton">Delete</button>
+                    </a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New</button>
+        </div>
     </div>
     <div th:replace="fragments/newScene"></div>
     <div th:replace="fragments/footer"></div>
