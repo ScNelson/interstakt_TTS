@@ -6,19 +6,32 @@
 
 <body>
     <div th:fragment="scorePath">
-        <h5>Path</h5>
-        <ul>
-            <li>
-                <a th:href="@{/score/{title} (title=${score.title})}" th:text="${score.title}"></a>
-            </li>
+        <div>
+            <span>
+                <a th:href="@{/{username}/score/{title}/{id} (username=${user.username}, title=${score.title}, id=${score.id})}" th:text="${score.title}"></a>
+            </span>
+
+             > 
+            <span>
+                <a th:if="${level == 'voice'}" th:text="${voice.name}"></a>
+                <a th:if="${level == 'scene'}" th:href="@{/{username}/score/{title}/{name}/{scoreId}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, scoreId = ${score.id}, voiceId = ${voice.id})}" th:text="${voice.name}"></a>
+            </span> 
+            <span th:unless="${level == 'voice'}">
+                > <a th:text="${scene.name}"></a>
+            </span>
+        </div>
+        <!--
+            <ul>
+            
             <li>
                 <p th:if="${level == 'voice'}" th:text="${voice.name}"></p>
-                <a th:if="${level == 'scene'}" th:href="@{/score/{title}/{name} (title=${score.title}, name=${voice.name})}" th:text="${voice.name}"></a>
+                <a th:if="${level == 'scene'}" th:href="@{/{username}/score/{title}/{name}/{scoreId}-{voiceId} (title=${score.title}, name=${voice.name}, scoreId = ${score.id}, voiceId = ${voice.id})}" th:text="${voice.name}"></a>
             </li>
             <li th:unless="${level == 'voice'}">
                 <a th:text="${scene.name}"></a>
             </li>
-        </ul>       
+        </ul>  
+        -->     
     </div>
 </body>
 
