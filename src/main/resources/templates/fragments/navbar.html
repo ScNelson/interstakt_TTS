@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
 
@@ -6,9 +7,9 @@
 
 <body>
     <div th:fragment="navbar">
-        <nav class="navbar navbar-expand-lg" style="background-color: black;">
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: black;">
             <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}">
+                <a class="navbar-brand mr-4" th:href="@{/}">
                     <img src="/images/InterstaktLogo_NoBackground.png" width="20" height="35" style="margin-left: 15px;"
                         alt="">
                 </a>
@@ -20,16 +21,46 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/scores}" style="color: #ffffff">Scores</a>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/{username}/scores (username=${user.username})}" style="color: #ffffff" sec:authorize="isAuthenticated()">Scores</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Levels
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Voices</a>
+                                <a class="dropdown-item" href="#">Scenes</a>
+                            </div>
+                        </li>  
+                        <!--Make a MIDI dropdown, containing Controllers (MIDI controllers, controller interfaces) and Destinations (CCs, Ableton/Resolume)-->
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
                             <a class="nav-link" style="color: #ffffff">Controllers</a>
+                        </li>
+                        <!--Instruments can include built-in synthesizers, as well as custom made synthesizers/samplers. Maybe make effects too?-->
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" style="color: #ffffff">Instruments</a>
+                        </li>
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" style="color: #ffffff">Performances</a>
+                        </li>
+                        <!--Add a Playground option-->
+                        <!--
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" style="color: #ffffff">Tags</a>
+                        </li>
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" style="color: #ffffff">Recordings</a>
+                        </li>               
+                        -->
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" style="color: #ffffff" th:href="@{/{username}/search (username = ${user.username})}">Search</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav navbar-right" th:object="${user}">
                         <!--
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style="color: #2DFF0C" sec:authentication="name"></span>
@@ -40,15 +71,26 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Logout</a>
                             </div>
-                        </li>   
-                        -->
-                        <li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
-                                th:href="@{/profile/{user} (user=${user.username})}" style="color: #2DFF0C">
-                                <span sec:authentication="name"></span></a>
-                        <li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" href="../logout"
-                                style="color: #ffffff">Logout</a></li>
-                        <li sec:authorize="!isAuthenticated()" class="nav-item"><a class="nav-link"
-                                href="../login">Login</a></li>
+                        </li>  
+                        --> 
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link"
+                                th:href="@{/{user}/profile (user=${user.username})}" style="color: #2DFF0C">
+                                <span sec:authentication="name"></span>
+                            </a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="../logout"
+                                style="color: #ffffff">Logout</a>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="../login"
+                                style="color: #ffffff">Login</a>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="../signup"
+                                style="color: #ffffff">Sign Up</a>
+                        </li>
                     </ul>
                 </div>
             </div>
