@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{userName}/score/{title}")
 public class ScoreController {
    
     @Autowired
@@ -32,41 +33,47 @@ public class ScoreController {
     @Autowired
     private VoiceService voiceService;
 
-    public void addScoreAttributes(String title, Model model){
-        User user = userService.getLoggedInUser();
-        Score score = scoreService.find(title);
-        List<Voice> voices = voiceService.findAllByScore(score);
+    private User loggedInUser;
+
+    private Score currScore;
+
+    public void addScoreAttributes(Long id, Model model){
+        loggedInUser = userService.getLoggedInUser();
+        currScore = scoreService.find(id);
+        List<Voice> voices = voiceService.findAllByScore(currScore);
         Voice voice = new Voice();
-        model.addAttribute("user", user);
-        model.addAttribute("score", score);
+        model.addAttribute("user", loggedInUser);
+        model.addAttribute("score", currScore);
         model.addAttribute("voice", voice);
         model.addAttribute("voiceList", voices);
         model.addAttribute("voiceCount", voices.size());
-        model.addAttribute("sceneCount", scoreService.sceneCount(score.getId()));
+        model.addAttribute("sceneCount", scoreService.sceneCount(currScore.getId()));
         model.addAttribute("level", "score");
     }
    
-    @GetMapping(value= {"/score/{title}"})
-    public String getScoreWithID(@PathVariable String title, Model model){
-        addScoreAttributes(title, model);
+    // Maybe change to {title}-{id}, and pass in the id value 
+    @GetMapping(value= {"/{id}"})
+    public String getScoreWithID(@PathVariable Long id, Model model){
+        addScoreAttributes(id, model);
         return "score";
     }
 
-    @PostMapping(value = "/score/{title}")
-    public String submitVoiceForm(@Valid Voice voice, @PathVariable String title, BindingResult bindingResult, Model model) {
-        Score score = scoreService.find(title);
-        voice.setScore(score);
-        voice.setComposer(score.getComposer());
+    @PostMapping(value = "/{id}")
+    public String submitVoiceForm(@Valid Voice voice, @PathVariable Long id, BindingResult bindingResult, Model model) {
+        currScore = scoreService.find(id);
+        voice.setScore(currScore);
+        voice.setComposer(currScore.getComposer());
         voiceService.save(voice);
-        addScoreAttributes(title, model);
-        return "score";
+        addScoreAttributes(id, model);
+        return "redirect:/" + loggedInUser.getUsername() + "/score/" + currScore.getTitle() + "/" + id;
     }
 
-    @RequestMapping(value = "/score/{title}/delete/{id}")
-    public String deleteVoiceWithID(@PathVariable String title, @PathVariable Long id, Model model) {
-        voiceService.delete(id);
+    @RequestMapping(value = "/delete/{id}-{voiceId}")
+    public String deleteVoiceWithID(@PathVariable Long id, @PathVariable Long voiceId, Model model) {
+        voiceService.delete(voiceId);
 
-        addScoreAttributes(title, model);
-        return "redirect:/score/" + title;
+        addScoreAttributes(id, model);
+        
+        return "redirect:/" + loggedInUser.getUsername() + "/score/" + currScore.getTitle() + "/" + id;
     }
 }

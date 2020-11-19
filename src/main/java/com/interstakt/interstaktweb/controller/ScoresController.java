@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{userName}")
 public class ScoresController {
     @Autowired
     private UserService userService;
@@ -66,7 +67,8 @@ public class ScoresController {
     public String deleteScoreWithID(@PathVariable Long id, Score score, Model model) {
         scoreService.delete(id);
         addComposerAttributes(model);
+        User user = userService.getLoggedInUser();
         
-        return "redirect:/scores";
+        return "redirect:/" + user.getUsername() + "/scores";
     }
 }

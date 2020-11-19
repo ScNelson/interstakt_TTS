@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{username}/score/{score}/{voice}/")
 public class SceneController {
     @Autowired
     private UserService userService;
@@ -36,12 +37,12 @@ public class SceneController {
     @Autowired
     private SceneService sceneService;
    
-    @GetMapping(value= {"/score/{title}/{name}/{sceneName}"})
-    public String getVoiceWithID(@PathVariable String title, @PathVariable String name, @PathVariable String sceneName, Model model){
+    @GetMapping(value= {"/{name}/{scoreId}-{voiceId}-{sceneId}"})
+    public String getVoiceWithID(@PathVariable Long scoreId, @PathVariable Long voiceId, @PathVariable Long sceneId, Model model){
         User user = userService.getLoggedInUser();
-        Score score = scoreService.find(title);
-        Voice voice = voiceService.find(name);
-        Scene scene = sceneService.find(sceneName);
+        Score score = scoreService.find(scoreId);
+        Voice voice = voiceService.find(voiceId);
+        Scene scene = sceneService.find(sceneId);
         //Scene scene = new Scene();
         model.addAttribute("user", user);
         model.addAttribute("score", score);

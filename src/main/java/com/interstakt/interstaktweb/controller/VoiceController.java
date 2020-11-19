@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{userName}/score/{title}/{name}")
 public class VoiceController {
     @Autowired
     private UserService userService;
@@ -36,49 +37,55 @@ public class VoiceController {
     @Autowired
     private SceneService sceneService;
 
-    public void addVoiceAttributes(String title, String name, Model model){
-        User user = userService.getLoggedInUser();
-        Score score = scoreService.find(title);
-        Voice voice = voiceService.find(name);
-        List<Scene> sceneList = sceneService.findAllByVoice(voice);
+    private User loggedInUser;
+
+    private Score currScore;
+
+    private Voice currVoice;
+
+    public void addVoiceAttributes(Long id, Long voiceId, Model model){
+        loggedInUser = userService.getLoggedInUser();
+        currScore = scoreService.find(id);
+        currVoice = voiceService.find(voiceId);
+        List<Scene> sceneList = sceneService.findAllByVoice(currVoice);
         
         Scene scene = new Scene();
 
-        model.addAttribute("user", user);
-        model.addAttribute("score", score);
-        model.addAttribute("voice", voice);
-        model.addAttribute("voiceCount", scoreService.voiceCount(score.getId()));
+        model.addAttribute("user", loggedInUser);
+        model.addAttribute("score", currScore);
+        model.addAttribute("voice", currVoice);
+        model.addAttribute("voiceCount", scoreService.voiceCount(currScore.getId()));
         model.addAttribute("scene", scene);
         model.addAttribute("sceneCount", sceneList.size());
         model.addAttribute("sceneList", sceneList);
         model.addAttribute("level", "voice");
     }
    
-    @GetMapping(value= {"/score/{title}/{name}"})
-    public String getVoiceWithID(@PathVariable String title, @PathVariable String name, Model model){
-        addVoiceAttributes(title, name, model);
+    @GetMapping(value= {"/{scoreId}-{voiceId}"})
+    public String getVoiceWithID(@PathVariable Long scoreId, @PathVariable Long voiceId, @PathVariable String name, Model model){
+        addVoiceAttributes(scoreId, voiceId, model);
 
         return "voice";
     }
 
-    @PostMapping(value = "/score/{title}/{name}")
-    public String submitSceneForm(@Valid Scene scene, @PathVariable String title, @PathVariable String name, BindingResult bindingResult, Model model) {
-        Voice voice = voiceService.find(name);
+    @PostMapping(value = "/{scoreId}-{voiceId}")
+    public String submitSceneForm(@Valid Scene scene, @PathVariable Long scoreId, @PathVariable Long voiceId, @PathVariable String name, BindingResult bindingResult, Model model) {
+        Voice voice = voiceService.find(voiceId);
         scene.setScore(voice.getScore());
         scene.setComposer(voice.getComposer());
         scene.setVoice(voice);
         sceneService.save(scene);
 
-        addVoiceAttributes(title, name, model);
+        addVoiceAttributes(scoreId, voiceId, model);
         
         return "voice";
     }
 
-    @RequestMapping(value = "/score/{title}/{name}/delete/{id}")
-    public String deleteSceneWithID(@PathVariable String title, @PathVariable String name, @PathVariable Long id, Model model) {
-        sceneService.delete(id);
+    @RequestMapping(value = "/delete/{scoreId}-{voiceId}-{sceneId}")
+    public String deleteSceneWithID(@PathVariable Long scoreId, @PathVariable Long voiceId, @PathVariable Long sceneId, Model model) {
+        sceneService.delete(sceneId);
 
-        addVoiceAttributes(title, name, model);
-        return "redirect:/score/" + title + "/" + name;
+        addVoiceAttributes(scoreId, voiceId, model);
+        return "redirect:/" + loggedInUser.getUsername() + "/score/" + currScore.getTitle() + "/" + currVoice.getName() + "/" + scoreId + "-" + voiceId;
     }
 }
