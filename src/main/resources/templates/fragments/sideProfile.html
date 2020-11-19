@@ -10,8 +10,8 @@
         <div>
             <img src="https://cdn.iconscout.com/icon/free/png-256/user-avatar-contact-portfolio-personal-portrait-profile-1-5182.png" alt="" width="200px" height="200px">
         </div>
-        <h4 href="">Name</h4>
-            <a href="">username</a>
+        <h4 th:text="${user.firstName + ' ' + user.lastName}"></h4>
+            <a th:href="@{/{user}/profile (user=${user.username})}" style="color: #2DFF0C" th:text=${user.username}></a>
         <div class="profile-content">
             <div class="side-score-div">
                 <h6 class="side-score-element">Scores</h6>
