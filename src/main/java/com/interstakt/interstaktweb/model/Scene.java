@@ -107,5 +107,10 @@ public class Scene {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Scene [composer=" + composer + ", createdAt=" + createdAt + ", name=" + name + ", score=" + score
+                + ", tags=" + tags + ", voice=" + voice + "]";
+    }
 }

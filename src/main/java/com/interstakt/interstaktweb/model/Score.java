@@ -129,10 +129,10 @@ public class Score {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-    
+
     @Override
     public String toString() {
         return "Score [composer=" + composer + ", createdAt=" + createdAt + ", createdTimestamp=" + createdTimestamp
-                + ", title=" + title + ", voices=" + voices + "]";
+                + ", tags=" + tags + ", title=" + title + ", voices=" + voices + "]";
     }
 }

@@ -102,4 +102,10 @@ public class Voice {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+
+    @Override
+    public String toString() {
+        return "Voice [composer=" + composer + ", createdAt=" + createdAt + ", name=" + name + ", scenes=" + scenes
+                + ", score=" + score + ", tags=" + tags + "]";
+    }
 }
