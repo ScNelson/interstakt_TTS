@@ -18,7 +18,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="form-signin" th:action="@{/score/{title} (title=${score.title})}" th:object="${voice}" method="post" autocomplete="off">
+                    <form class="form-signin" th:action="@{/{username}/score/{title}/{id} (username=${user.username}, title=${score.title}, id=${score.id})}" th:object="${voice}" method="post" autocomplete="off">
                         <div class="modal-body">
                             <p>
                                 <label for="title" class="sr-only">Voice Name</label>

@@ -18,12 +18,18 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="form-signin" th:action="@{/scores}" th:object="${score}" method="post" autocomplete="off">
+                    <form class="form-signin" th:action="@{/{username}/scores (username=${user.username})}" th:object="${score}" method="post" autocomplete="off">
                         <div class="modal-body">
                             <p>
                                 <label for="title" class="sr-only">Score Name</label>
                                 <input th:field="*{title}" class="form-control" th:placeholder="Title" required>
                             </p>
+                            <!-- 
+                            <p>
+                                <label for="tags" class="sr-only">Tags</label>
+                                <input th:field="*{tags}" class="form-control" th:placeholder="Title" required>
+                            </p>        
+                            -->
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">CREATE</button>
