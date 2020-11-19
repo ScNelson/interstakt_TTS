@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.interstakt.interstaktweb.model.Scene;
 import com.interstakt.interstaktweb.model.Score;
@@ -13,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SceneService {
-    
+
     @Autowired
     private SceneRepository sceneRepository;
 
-    public Scene find(String name) {
-        Scene scene = sceneRepository.findByName(name);
-        return scene;
+    public Scene find(Long id) {
+        Optional<Scene> scene = sceneRepository.findById(id);
+        Scene result = scene.get();
+        return result;
     }
 
     public List<Scene> findAll() {

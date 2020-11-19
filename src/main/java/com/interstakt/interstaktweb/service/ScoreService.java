@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.interstakt.interstaktweb.model.Score;
 import com.interstakt.interstaktweb.model.User;
@@ -22,9 +23,10 @@ public class ScoreService {
     @Autowired
     private SceneRepository sceneRepository;
 
-    public Score find(String title) {
-        Score score = scoreRepository.findByTitle(title);
-        return score;
+    public Score find(Long id) {
+        Optional<Score> score = scoreRepository.findById(id);
+        Score result = score.get();
+        return result;
     }
 
     public List<Score> findAll() {

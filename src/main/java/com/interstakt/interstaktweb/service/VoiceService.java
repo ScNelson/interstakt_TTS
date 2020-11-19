@@ -1,6 +1,7 @@
 package com.interstakt.interstaktweb.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.interstakt.interstaktweb.model.Score;
 import com.interstakt.interstaktweb.model.User;
@@ -15,9 +16,10 @@ public class VoiceService {
     @Autowired
     private VoiceRepository voiceRepository;
 
-    public Voice find(String name) {
-        Voice voice = voiceRepository.findByName(name);
-        return voice;
+    public Voice find(Long id) {
+        Optional<Voice> voice = voiceRepository.findById(id);
+        Voice result = voice.get();
+        return result;
     }
 
     public List<Voice> findAll() {
