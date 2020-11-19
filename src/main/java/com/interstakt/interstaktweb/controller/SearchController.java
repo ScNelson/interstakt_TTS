@@ -16,8 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{username}")
 public class SearchController {
     @Autowired
     private UserService userService;
@@ -38,17 +40,24 @@ public class SearchController {
         List<Voice> voices = voiceService.findAllByUser(user);
         List<Scene> scenes = sceneService.findAllByUser(user);
 
-        List<String> scoreList = new ArrayList<String>();
+        List<List<String>> scoreList = new ArrayList<List<String>>();
         List<List<String>> voiceList = new ArrayList<List<String>>();
         List<List<String>> sceneList = new ArrayList<List<String>>();
 
         for (int i=0; i < scores.size(); i++) {
-            scoreList.add(i, scores.get(i).getTitle());
+            List<String> scoreParams = new ArrayList<String>();
+
+            scoreParams.add(scores.get(i).getId().toString());
+            scoreParams.add(scores.get(i).getTitle());
+
+            scoreList.add(i, scoreParams);
         }
 
         for (int i=0; i < voices.size(); i++) {
             List<String> voiceParams = new ArrayList<String>();
 
+            voiceParams.add(voices.get(i).getScore().getId().toString());
+            voiceParams.add(voices.get(i).getId().toString());
             voiceParams.add(voices.get(i).getName());
             voiceParams.add(voices.get(i).getScore().getTitle());
 
@@ -58,6 +67,9 @@ public class SearchController {
         for (int i=0; i < scenes.size(); i++) {
             List<String> sceneParams = new ArrayList<String>();
 
+            sceneParams.add(scenes.get(i).getScore().getId().toString());
+            sceneParams.add(scenes.get(i).getVoice().getId().toString());
+            sceneParams.add(scenes.get(i).getId().toString());
             sceneParams.add(scenes.get(i).getName());
             sceneParams.add(scenes.get(i).getScore().getTitle());
             sceneParams.add(scenes.get(i).getVoice().getName());
