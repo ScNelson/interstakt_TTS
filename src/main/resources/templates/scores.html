@@ -17,7 +17,10 @@
                         <h1 class="scores-title">Scores</h1>
                         <button class="btn btn-outline-light new-score-btn" type="button" data-toggle="modal"
                             data-target="#exampleModalCenter">New Score</button>
-                        <button class="btn btn-outline-light new-score-btn" type="button">Search Levels</button>
+                            <input class="input new-score-btn" type="text" id="myInput" onkeyup="searchLevels(scoreList, voiceList, sceneList)" placeholder="Search">
+                            <a class="new-score-btn" th:href="@{/{username}/search (username = ${user.username})}">
+                                Search All
+                            </a>
                     </div>
                     <div class="scores-body">
                         <div th:each="score:${scoreList}">
@@ -34,6 +37,7 @@
         </div>
         </div>
     <div th:replace="fragments/newScore"></div>
+    <div th:replace="fragments/modals/scoreProperties"></div>
     <div th:replace="fragments/footer"></div>
 </body>
 </html>
