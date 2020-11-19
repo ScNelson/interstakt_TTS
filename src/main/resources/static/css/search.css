@@ -1,0 +1,35 @@
+.searchTitle {
+    display: block;
+    font-size: 32px;
+    width: 100px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.searchBar {
+    display: block;
+    font-size: 20px;
+    width: 400px;
+    margin: auto;
+    margin-top: 5px;
+}
+
+#levelsList {
+    margin-top: 25px;
+}
+
+.level-title {
+    font-size: 20px;
+    border: grey;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+.level-div {
+    display: inline-block;
+}
+
+.level-path {
+    float: right;
+    font-size: 10px;
+}
