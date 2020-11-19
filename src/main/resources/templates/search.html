@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <div th:replace="fragments/styling :: headStyles"></div>
+    <link rel="stylesheet" href="/css/search.css">
+</head>
+
+<body onload="onLoaded()">
+    <div th:replace="fragments/navbar"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btn btn-outline-light" type="button" onclick="viewAllLevels()">View All</button>
+            </div>
+            <div class="col-sm-10">
+                <p class="searchTitle">Search</p>
+                <input class="input searchBar" type="text" id="myInput"
+                    onkeyup="searchLevels(scoreList, voiceList, sceneList)" placeholder="Search">
+                <div id="levelsList" class="row"></div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer"></div>
+    <script th:inline="javascript">
+        var scoreList = /*[[${scoreList}]]*/;
+        var voiceList = /*[[${voiceList}]]*/;
+        var sceneList = /*[[${sceneList}]]*/;
+        var username = /*[[${user.username}]]*/;
+    </script>
+    <script th:inline="javascript" src="/js/search.js"></script>
+    <script src="/js/search.js"></script>
+</body>
+
+</html>
