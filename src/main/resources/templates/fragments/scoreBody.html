@@ -13,7 +13,7 @@
             </div>
             <div class="score-info">
                 <div class="scoreTitleDiv">
-                    <a th:href="@{/score/{title}(title=${score.title})}">
+                    <a th:href="@{/{username}/score/{title}/{id}(username= ${user.username}, title=${score.title}, id=${score.id})}">
                         <h3 th:text="${score.title}" class="scoreTitle"></h3>
                     </a>
                     <p th:text="${score.createdTimestamp}" class="scoreTimestamp"></p>
@@ -29,9 +29,10 @@
                 </div>
                 <div class="card-footer">
                     <a href="#">
-                        <button class="btn btn-outline-light scoreAlterButton">Edit</button>
+                        <button class="btn btn-outline-light scoreAlterButton" data-toggle="modal"
+                        data-target="#scorePropertiesModal">Edit</button>
                     </a>
-                    <a href="#" th:href="@{../../scores/delete/{id}(id=${score.id})}">
+                    <a href="#" th:href="@{../../{username}/scores/delete/{id}(username=${user.username}, id=${score.id})}">
                         <button class="btn btn-outline-danger scoreAlterButton">Delete</button>
                     </a>
                 </div>
