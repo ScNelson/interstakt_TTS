@@ -3,28 +3,38 @@
 
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/score.css">
 </head>
 
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <h1 th:text=${score.title}></h1>
+        <!--
+        <h3>Score Scenes</h3>
+        <button class="btn btn-outline-light" type="button">New</button>
+        -->
         <h3>Voices</h3>
-        <ul class="list-group" th:each="voice:${voiceList}">
-            <li class="list-group-item">
-                <a th:href="@{/score/{title}/{name}(title=${score.title}, name=${voice.name})}">
-                    <span th:text="${voice.name}"></span>
-                </a>
-                <a href="#" th:href="@{../../score/{title}/delete/{id}(title=${score.title}, id=${voice.id})}">
-                    <button class="btn btn-outline-danger postAlterButton">Delete</button>
-                </a>
-            </li>
-        </ul>
-        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New
-            Voice</button>
+        <!--
+        When creating a new Voice, add checkbox indicating whether you want to include a Score's tags
+        Do the same for Scene's as well (inherit Score or Voice tags, or both)
+        -->
+        <div>
+            <ul class="list-inline list-group-horizontal" th:each="voice:${voiceList}">
+                <li class="list-group-item">
+                    <a th:href="@{/{username}/score/{title}/{name}/{id}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, id=${score.id}, voiceId=${voice.id})}">
+                        <span th:text="${voice.name}"></span>
+                    </a>
+                    <a href="#" th:href="@{/{username}/score/{title}/delete/{id}-{voiceId}(username=${user.username}, title=${score.title}, id=${score.id}, voiceId=${voice.id})}">
+                        <button class="btn btn-outline-danger postAlterButton">Delete</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New</button>
     </div>
     <div th:replace="fragments/newVoice"></div>
+    <!--Maybe don't include footer in the level pages-->
     <div th:replace="fragments/footer"></div>
 </body>
 
