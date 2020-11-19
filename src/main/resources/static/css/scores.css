@@ -20,7 +20,22 @@
 .scores-body {
     height: 400px;
     overflow: scroll;
+    overflow-x: hidden;
 }
+
+.scores-body::-webkit-scrollbar-track {
+    padding: 2px 0;
+    background-color: #404040;
+  }
+  
+  .scores-body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .scores-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #737272;
+  }
 
 .scores-title {
     display: inline-block;
