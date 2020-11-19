@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/{username}")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -21,11 +23,14 @@ public class UserController {
     @Autowired
     private ScoreService scoreService;
 
-    @GetMapping(value = "/profile/{username}")
+    @GetMapping(value = "/profile")
     public String getUser(@PathVariable(value = "username") String username, Model model) {
         User user = userService.findByUsername(username);
         List<Score> scores = scoreService.findAllByUser(user);
-        model.addAttribute("scoreList", scores);
+        model.addAttribute("scoreCount", scores.size());
+        model.addAttribute("voiceCount", userService.getVoiceCount(user));
+        model.addAttribute("sceneCount", userService.getSceneCount(user));
+        // model.addAttribute("scoreList", scores);
         model.addAttribute("user", user);
         return "profile";
     }
