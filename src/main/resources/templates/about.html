@@ -1,34 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
     <link rel="stylesheet" href="/css/about.css">
 </head>
 
-<body>
+<body onload="onLoaded()">
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-        <div id="loader"></div>
-        <div id="loadedPage">
-            <p class="aboutTitle">About</p>
-            <br>
-            <p class="aboutTitle">Overview</p>
-            <p class="aboutTitle">Features</p>
-            <p>Hierarchical Structure</p>
-            <p>Trigger System</p>
-            <p>Parameter System</p>
-            <p>Mapping System</p>
-            <p>General Controller</p>
-            <p>Meta-Keyboard</p>
-            <p>Control Scenes</p>
-            <p class="aboutTitle">Demo</p>
-            <p>Algorithmic</p>
-            <p>Controller</p>
+        <!-- 
+            <div id="loader"></div>
+            <div id="loadedPage">
+        -->
+        <div id="sidebar">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h3 class="list-group-item-heading about-title">About</h3>
+                </div>
+                <div class="list-group-item">
+                    <a href="/about/overview">
+                        <h4 id="overview" class="list-group-item-heading">Overview</h4>
+                    </a>
+                </div>
+                <div class="list-group-item">
+                    <a href="/about/features/hierarchies">
+                        <h4 id="features" class="list-group-item-heading">Features</h4>
+                    </a>
+                    <div th:if="${section == 'features'}">
+                        <a id="hierarchies" class="list-group-item-text" href="/about/features/hierarchies">Hierarchies</a>
+                        <a id="triggers" class="list-group-item-text" href="/about/features/triggers">Triggers</a>
+                        <a id="parameters" class="list-group-item-text" href="/about/features/parameters">Parameters</a>
+                        <a id="mappings" class="list-group-item-text" href="/about/features/mappings">Mappings</a>
+                        <a id="featuresController" class="list-group-item-text" href="/about/features/featuresController">General Controller</a>
+                        <a id="keyboard" class="list-group-item-text" href="/about/features/keyboard">Meta-Keyboard</a>
+                        <a id="controlScenes" class="list-group-item-text" href="/about/features/controlScenes">Control Scenes</a>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <a href="/about/demo/algorithmic">
+                        <h4 id="demo" class="list-group-item-heading">Demo</h4>
+                    </a>
+                    <div th:if="${section == 'demo'}">
+                        <a id="algorithmic" class="list-group-item-text" onclick="changeView('demo', 'algorithmic'); return false;">Algorithmic</a>
+                        <a id="demoController" class="list-group-item-text" onclick="changeView('demo', 'demoController'); return false;">Controller</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div th:replace="fragments/footer"></div>
-        </div>
-        <div th:replace="fragments/footer"></div>
+        <!--</div>
+    </div>-->
     </div>
+    <div th:replace="fragments/footer"></div>
+    <script th:inline="javascript">
+        var currSection = /*[[${section}]]*/;
+        var currSubSection = /*[[${subsection}]]*/;
+    </script>
+    <script th:inline="javascript" src="/js/about.js"></script>
+    <script src="/js/about.js"></script>
 </body>
+
 </html>
