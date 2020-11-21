@@ -1,14 +1,70 @@
-html {
-    position: relative;
-    min-height: 100%;
+.wrapper {
+    display: flex;
+    width: 100%;
 }
 
-body {
+#sidebar {
+    width: 250px;
+    height: 93%;
+    padding-top: 61px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: black;
     background-color: #373B40;
-    color: white;
-    font-family: 'Work Sans', sans-serif;
+    overflow: scroll;
+    border-radius: 0%;
+    border: white;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
 }
 
-.aboutTitle {
-    font-size: 36px;
+.list-group {
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0%;
+    border: gray;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+}
+
+.list-group-item {
+    background-color: #373B40;
+    border-width: 0px 0px 0px 0px;
+    padding-bottom: 0px;
+}
+
+.list-group-item-heading {
+    color: white;
+    border: gray;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    margin-bottom: 15px;
+}
+
+.list-group-item-text {
+    color: white;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: gray;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+}
+
+.list-group-item-heading:hover, .list-group-item-text:hover {
+    color: #2DFF0C;
+}
+
+.active {
+    color: #2DFF0C;
+}
+
+.about-title, .about-title:hover {
+    color: white;
+    font-size: 30px;
+    border: white;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
 }
