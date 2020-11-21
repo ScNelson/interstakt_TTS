@@ -18,6 +18,9 @@ var filter, levelName, i, j, levelTitle, levelsList, levelListed, levelLink, lev
 
 function onLoaded() {
     searchLevels();
+    scoreUL.setAttribute("class", "level-ul");
+    voiceUL.setAttribute("class", "level-ul");
+    sceneUL.setAttribute("class", "level-ul");
 }
 
 function searchLevels() {
@@ -161,8 +164,7 @@ function createLevelDiv(level, levelUL) {
             break;
         case "scene":
             levelLink.setAttribute("href", "/" + username + "/score/" + levelScore + "/" + levelVoice + "/" + levelName + "/" + scoreId + "-" + voiceId + "-" + sceneId);
-            levelPath.innerHTML = levelScore + " > " + levelVoice;
-            levelPath.innerHTML = "<span><a href='/" + username + "/score/" + levelScore + "/" + scoreId + "'>" + levelScore + "</a></span> > <span><a href='/" + username + "/score/" + levelScore + "/" + levelName + "/" + scoreId + "-" + voiceId + "'>" + levelVoice + "</a></span>";;
+            levelPath.innerHTML = "<span><a href='/" + username + "/score/" + levelScore + "/" + scoreId + "'>" + levelScore + "</a></span> <span class='arrow'>></span> <span><a href='/" + username + "/score/" + levelScore + "/" + levelName + "/" + scoreId + "-" + voiceId + "'>" + levelVoice + "</a></span>";;
             break;
     }
     levelLink.innerHTML = levelName;
