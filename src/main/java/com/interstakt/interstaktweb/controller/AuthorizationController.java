@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -39,6 +40,21 @@ public class AuthorizationController {
 
     @GetMapping(value = "/about")
     public String about(Model model) {
+        checkLoggedIn(model);
+        return "about";
+    }
+
+    @GetMapping(value = "/about/overview")
+    public String overview(Model model) {
+        model.addAttribute("section", "overview");
+        checkLoggedIn(model);
+        return "about";
+    }
+
+    @GetMapping(value = "/about/{section}/{subsection}")
+    public String overviewSection(@PathVariable String section, @PathVariable String subsection, Model model) {
+        model.addAttribute("section", section);
+        model.addAttribute("subsection", subsection);
         checkLoggedIn(model);
         return "about";
     }
