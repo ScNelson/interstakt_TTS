@@ -36,9 +36,9 @@ public class SearchController {
     @GetMapping(value="/search")
     public String search(Model model){
         User user = userService.getLoggedInUser();
-        List<Score> scores = scoreService.findAllByUser(user);
-        List<Voice> voices = voiceService.findAllByUser(user);
-        List<Scene> scenes = sceneService.findAllByUser(user);
+        List<Score> scores = scoreService.findAllByUserOrderTitle(user);
+        List<Voice> voices = voiceService.findAllByUserOrderName(user);
+        List<Scene> scenes = sceneService.findAllByUserOrderName(user);
 
         List<List<String>> scoreList = new ArrayList<List<String>>();
         List<List<String>> voiceList = new ArrayList<List<String>>();
