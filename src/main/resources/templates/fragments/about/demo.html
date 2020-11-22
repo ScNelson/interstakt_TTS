@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="demo">
+        <h2>Demo</h2>
+        <p>
+            The following is a simple piece in Fmin that demonstrates the major components of Interstakt. 
+        </p>
+        <p>
+            5 main sections (“scenes”)
+        </p>
+        <ul>
+            <li>
+                Intro  (Opening Theme in Lead Voice) 
+            </li>
+            <li>
+                A  (A or SlowA in Fmin [root key])
+            </li>
+            <li>
+                B  (B or SlowB in Abmaj [relative major])
+            </li>
+            <li>
+                C  (C or SlowC in Cmaj [major V]) 
+            </li>
+            <li>
+                Outro  (Fast [Cmaj] or Slow [Fmin] Final Gesture)
+            </li>
+        </ul>
+        <p>
+            4 Voices
+        </p>
+        <ul>
+            <li>Lead</li>
+            <li>Bass</li>
+            <li>Ambient (voice samples through effects)</li>
+            <li>Kick (kick drum)</li>
+        </ul>
+        <p>
+            The composition always contains the same material, but it plays back differently every time.
+        </p> 
+        <p>
+            In order to demonstrate this, there are 4 different playthrough examples:
+        </p>
+        <ul>
+            <li>2 Algorithmic (Will always play Intro – A – B – C – Outro when strictly algorithmic)</li>
+            <li>2 Controller-Influenced (One button disrupts the algorithmic playthrough)</li>
+        </ul>
+    </div>
+</body>
+
+</html>

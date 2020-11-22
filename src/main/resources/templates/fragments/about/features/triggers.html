@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="features">
+        <h2>Features - Triggers</h2>
+        <p>
+            Interstakt’s hierarchical structure provides means for organizing musical information. But how that information is played out once the Score is activated is not specified in the structure itself. 
+        </p>
+        <p>
+            The playing of scenic levels depends on how a user utilizes Interstakt’s trigger system, which is based in Max/MSP’s concept of a bang. Each level can be activated directly using a Max/MSP bang, which acts as a trigger impulse. This can be done by sending a bang into the left-most inlet of a scenic level object, or by clicking the activation light next to the levels name. Triggers can also be sent to any level in the hierarchy by creating trigger cells via a trigger menu that exists at all levels (see <span style="font-weight: bold;"><a href="/about/features/mappings">Mapping System</a></span> section).
+        </p>
+        <p>
+            When a scene is triggered, all other scenes at that level receive a deactivation bang, as well as the scenes existing at the levels below. So if a new Behavior scene is triggered, all other Behaviors in the Voice will receive a deactivation bang, as well as all Phrases and Gestures in the scenes below. The triggered Behavior will then be activated. 
+        </p>
+    </div>
+</body>
+
+</html>

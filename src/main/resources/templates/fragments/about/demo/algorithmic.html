@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="algorithmic">
+        <h2>Demo - Algorithmic</h2>
+        <p>
+            When the composition plays out strictly algorithmically, it will always go one route:
+        </p>
+        <p>
+            Intro – A (A or SlowA) – B (B or SlowB) – C (C or SlowC) – Outro
+        </p>
+        <p>
+            There are different random functions that determine the playout, so it will likely be a different playout every time:
+        </p>
+        <ul>
+            <li>
+                Different route (could maneuver to either normal or “Slow” versions of next scene)
+            </li>
+            <li>
+                Different scene lengths (might play back longer during different playthroughs based on how randomized thresholds are or are not met)
+            </li>
+        </ul>
+        <p>Playthrough 1</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/besAXNOVmm4" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        <p>Route: Intro – SlowA – B – C – Finale </p>
+        <p>Playthrough 2</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/DcAsscRcAy8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>Route: Intro – A – B – SlowC – SlowFinale </p>
+    </div>
+</body>
+
+</html>

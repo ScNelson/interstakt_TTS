@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="controller">
+        <h2>Demo - Controller</h2>
+        <p>
+            The controller examples focus on the Velocity control, and one button. There is still an algorithmic playthrough, but the button can disrupt it and/or cause the piece to play indefinitely.
+        </p> 
+        <p>
+            The Velocity control is configured to only control Velocity in this example.
+        </p> 
+        <p>
+            The button’s mappings are variable: they are dependent on what the current scene of the Score is playing. Whenever a new scene is triggered, then the button’s control scene is updated.
+        </p>
+        <p>
+            Possible Button Control Scenes:
+        </p>
+        <ul>
+            <li>
+                <p>Inactive – will not send any output</p>
+                <p>(Occurs when the Intro and Outro scenes are active)</p> 
+            </li>
+            <li>
+                <p>A – will trigger the A scene</p>
+                <p>(Can occur when the C scene is active)</p>
+            </li> 
+            <li>
+                <p>B – will trigger the B scene</p> 
+                <p>(Can occur when the A scene is active)</p>  
+            </li>
+            <li>
+                <p>C – will trigger the C scene</p>
+                <p>(Can occur when the B scene is active)</p>
+            </li> 
+            <li>
+                <p>Kick_Fill – will trigger one of the Kick_Fill phrases in the Kick Voice</p>
+                <p>Can occur when any of the A, B, or C scenes are active</p>
+                <p>After a Kick_Fill phrase finishes playing, it will then randomly move the Score to the A, B, or C scenes. Therefore, the performer’s button presses can cause the piece to continue indefinitely, or skip scenes entirely.</p>
+            </li>
+        </ul>
+        <p>Playthrough 1</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bqoKA1Ey1kY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>Playthrough 2</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/g7w0Bv-fkws" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>

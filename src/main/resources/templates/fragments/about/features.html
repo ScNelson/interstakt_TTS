@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="features">
+        <h2>Features</h2>
+        <p>
+            Interstakt contains an interface for composing a Score, as well as an integrated controller that can map into the contents of a Score. 
+        </p>
+        <p>
+            The Score has a <span style="font-weight: bold;"><a href="/about/features/hierarchies">hierarchical structure</a></span>, where levels of scenic objects build up to create the overall Score.
+        </p>
+        <p>
+            The playout of a Score’s structure is determined by Interstakt’s <span style="font-weight: bold;"><a href="/about/features/triggers">trigger</a></span> and <span style="font-weight: bold;"><a href="/about/features/parameters">parameter</a></span> system, which allows for scenes to trigger each other and send parameter between each other.
+        </p> 
+        <p>
+            In order to create these interactions, a user would utilize Interstakt’s <span style="font-weight: bold;"><a href="/about/features/mappings">mapping</a></span> system. This holds a database for all of the elements within a Score, and allows for a user to connect elements together.
+        </p>
+        <p>
+            In addition to the Score, Interstakt also has integrated <span style="font-weight: bold;"><a href="/about/features/controllers">controllers</a></span>, which can map into the compositional hierarchy and the timbral parameters of each voice. Each control has the ability to map to multiple destinations and translate its output differently to each destination.
+        </p>    
+        <p>
+            Each control can also update its different mappings (<span style="font-weight: bold;"><a href="/about/features/controlScenes">control scenes</a></span>) depending on what events occur in the score.
+        </p>
+        <p>
+            The system is fully interactive: a performer can control the composition using the controllers, and the composition’s playout can determine what parameters the controllers are mapped to at a given time.
+        </p>
+    </div>
+</body>
+
+</html>

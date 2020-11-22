@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="overview">
+        <h2>Overview</h2>
+        <p>
+            Almost all existing music falls into one of two categories – completely “pre-specified” pieces, in which each note is written in the score, or “improvisational” pieces, in which the performer must select the notes with little guidance from the composer. When it comes to electronic music composition and performance, the methods largely reflect these two categories. Pre-specified corresponds to playback, whether that be playing tape loops, DJing, or triggering clips of audio and MIDI data in sync using Ableton Live. Improvisational corresponds to as much direct control as possible. This is seen more in the experimental and avant-garde realm, usually with custom controllers and/or algorithms that provide as much tweaking ability as can be imagined by the performer.
+        </p>
+        <p>
+            Interstakt is built with the intent to utilize as many of the positives, and as few of the negatives, contained within the playback and direct control strategies. The core idea is to find a compromise between the two philosophies. Scenic clips of pre-specified audio or data are placed within a hierarchical structure that utilizes levels of microstructural behaviors. And the user has both direct and algorithmic control of how that data is handled.
+        </p>
+        <p>
+            An analysis of prior work in hierarchical music structures inspires the architecture of Interstakt, utilizing traditional ideas of musical form in order to help define the scenic levels within the hierarchy. Fundamental scenes of musical information build up higher-order scenes within voices, which are orchestrated at an overall score level. These scenes can algorithmically trigger each other, interacting to maneuver up and down the hierarchy of musical material. 
+        </p>
+        <p>
+            The system is built to also withstand interactions with an integrated, adaptable controller. This controller is capable of interacting with the parameters existing at each scenic level, as well as the external sound-processing of each voice. Each control has the ability to map to multiple destinations, translate its output differently to each destination, and update its mappings depending on what events occur in the score.
+        </p>
+        <p>
+            The graphic user interface reflects the architecture of the system and its controller. All of the system’s major elements (levels, control behaviors, etc.) are organized as scenic objects. When new elements are created, the system adds them to the interface’s database. This allows the user to easily track and access each level, control, and parameter at all stages of the compositional process. With the integrated controller, it provides an organized environment for the composition and performance of complex interactive music.
+        </p>
+    </div>
+</body>
+
+</html>

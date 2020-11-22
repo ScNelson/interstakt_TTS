@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="features">
+        <h2>Features - Controllers</h2>
+        <p>
+            Interstakt provides the tools necessary for a performer to have direct control over algorithmic processes externally. Since the mapping system keeps track of all the elements created within a system, this stored data can be easily accessed for use with external controllers. 
+        </p>
+        <p>
+            Max/MSP comes packaged with Mira, which provides tools for superimposing certain interface objects onto other surfaces. A mira.frame object can be created within a Max/MSP patcher, and UI objects (sliders, buttons, message boxes, etc.) can be placed within the mira.frame’s borders. Whatever is placed within the frame will be superimposed onto the external device that is accessing Mira. 
+        </p>
+        <p>
+            This external device could either be the Mira app existing on an iPad, or a web browser page. Using the Mira app on an iPad is especially useful for a performer, as it allows for the controls to be tangibly manipulated via a touchscreen. But the web browser can be useful in this sense as well, since a performer could pull up the designated client webpage using a web browser on their touchscreen mobile device.
+        </p>
+        <p>
+            The current layout of this General Controller is rather arbitrary. The goals for the controller were more focused on integrating the controls into the system, rather than creating an effective layout for live performance. There are five faders and eight buttons, providing ample amounts of continuous and trigger controls. Additionally, there are controls for the general dynamics of the system: musical key, overall tempo, and overall velocity. 
+        </p>
+        <p> 
+            Each control can be mapped to multiple destinations, whether that be to the Score’s contents or external devices. Additionally, each control’s value change can be translated a number of ways while on its path to a destination. For example, rather than a fader simply sending its value directly to a destination, crossing a certain value could send out a trigger or parameter change. And a button could be set to only send out a trigger to a destination if it has been pressed a certain number of times, rather than just once.
+        </p>
+        <p>
+            These are just a couple of the many different options available. Since each destination can have its own unique translation, a user can create dynamic control interactions. This departs from one-dimensional, direct mappings to a destination, where the only translation option is scaling the control’s output to fit the range of a parameter’s potential values.
+        </p>
+        <p>
+            Along with the integrated General Controller, Interstakt also provides the option for a user to utilize their MIDI Keyboard as a Meta-Keyboard.
+        </p>
+        <p>
+            Interstakt has particular tools for use with the Meta-Keyboard, which can be created within the Gesture level of the compositional structure. These objects generate note behaviors depending on the state of this Meta-Keyboard. The different behaviors include accessing the currently played notes on the Meta-Keyboard by arpeggiating through them, creating chords based on them, selecting pre-designated notes from them if they are played, or simply playing notes of the Voice whenever the keyboard’s notes are played. This allows for a user to utilize their keyboard with these system objects in order to have direct tonal control of Voices and their generative processes. 
+        </p>
+        <p>
+            The Meta-Keyboard also provides more complex control options. For example, a user could create an interaction where if a series of certain notes are played, a Behavior in one of the Voices is triggered. These kinds of threshold options allow for subtle, interactive results when a user is performing. The performer can go about their normal performing actions while these thresholds drive the system forward within a composition, without having to directly concentrate on whether or not their actions are pushing the system in a specific direction.
+        </p>
+    </div>
+</body>
+
+</html>

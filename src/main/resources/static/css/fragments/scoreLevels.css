@@ -1,0 +1,106 @@
+
+.level-title {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    float: left;
+    background-color: rgba(0, 0, 0, 0.527);
+    border-radius: 0% !important;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 1px 0px 1px;
+    padding: 0px;
+    width: 120px;
+    margin: 0%;
+}
+
+.item-title {
+    float: left;
+    width: 100%; 
+    padding-left: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: white;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+}
+
+.item-title-text {
+    float: left;
+    font-weight: bold;
+    font-style: italic;
+    width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sub-level {
+    width: 115px;
+    margin-left: 2px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    box-shadow: none;
+}
+
+.sub-title {
+    padding-left: 10px;
+}
+
+.level-del {
+    float: right;
+    margin-top: 3px;
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+}
+
+.level-add {
+    height: 20px;
+    width: 20px;
+}
+
+.level-add-btn {
+    height: 30px;
+    width: 30px;
+    margin-top: 3px;
+    margin-left: 10px;
+    padding: 0%;
+}
+
+.level-add-btn-empty {
+    height: 30px;
+    width: 30px;
+    margin-top: 3px;
+    margin-left: 0px;
+    padding: 0%;
+}
+
+.level-add-btn:hover, .level-add-btn-empty:hover {
+    background-color: #2DFF0C;
+}
+
+.level-group {
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+}
+
+.level-slot {
+    width: 150px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.level-trigger {
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+}

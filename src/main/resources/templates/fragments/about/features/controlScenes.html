@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="features">
+        <h2>Features - Control Scenes</h2>
+        <p>
+            As with the rest of the system’s elements, the controllers are organized based on the concept of scenes. Rather than having universal mappings for the controls within the system, the mappings of a control have the ability to adapt depending on what scene that control is set to. When mapping a control, a user must first create and name a scene. Within the scene, the user can add as many mappings and translations as needed. The scene that is active when the system begins can also be set, so that the correct sets of mappings for each control will be initialized once the system is activated. 
+        </p>
+        <p>
+            The rationale for this scenic-based organization of mappings is that it allows for different sets of control mappings to be easily updated and activated by different elements of the system. When a scene is added to a control, that new scene is added to the mapping system’s directory. Therefore, mapping menus can access it from within the different levels of the system. For example, the triggering of a certain Phrase in a Voice could update the scene for a control. This would allow for the performer to more dynamically control the parameters that are active while that Phrase is active. Or in another case, the pressing of a button could update another control’s mappings. The performer could then directly manipulate how the controller interface is mapped to control the system in real-time. 
+        </p>
+    </div>
+</body>
+
+</html>
