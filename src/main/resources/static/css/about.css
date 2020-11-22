@@ -1,12 +1,31 @@
+body {
+    background: rgba(0, 0, 0, 0.87);
+}
+
+.container {
+    display: flex;
+    max-width: none;
+    height: auto;
+    min-height: 0px;
+    max-height: 85vh;
+}
+
+.main-logo {
+    display: block; 
+    width: 200px; 
+    margin:auto;
+    margin-top: 50px;
+}
+
 .wrapper {
     display: flex;
     width: 100%;
 }
 
 #sidebar {
-    width: 250px;
-    height: 93%;
-    padding-top: 61px;
+    display: inline-block;
+    width: 20%;
+    padding-top: 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -17,12 +36,49 @@
     border: white;
     border-style: solid;
     border-width: 0px 0px 0px 0px;
+    bottom: 0;
+}
+
+#content {
+    float: right;
+    padding-top: 30px;
+    margin-left: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    bottom: 0;
+    min-height: 0;
+    height: inherit;
+    overflow: scroll;
+}
+
+#content::-webkit-scrollbar {
+    width: 0px;
+    visibility: hidden;
+}
+
+#content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#content::-webkit-scrollbar-thumb {
+    background: #2DFF0C;
+    border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#content:hover::-webkit-scrollbar-thumb {
+    background-color: #2DFF0C;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .list-group {
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 20px;
     border-radius: 0%;
     border: gray;
     border-style: solid;
