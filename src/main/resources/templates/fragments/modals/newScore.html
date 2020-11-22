@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="/css/fragments/newScore.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:fragment="newScore">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">New Score</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-signin" th:action="@{/{username}/scores (username=${user.username})}" th:object="${score}" method="post" autocomplete="off">
+                        <div class="modal-body">
+                            <p>
+                                <label for="title" class="sr-only">Score Name</label>
+                                <input th:field="*{title}" class="form-control" th:placeholder="Title" required>
+                            </p>
+                            <!-- 
+                            <p>
+                                <label for="tags" class="sr-only">Tags</label>
+                                <input th:field="*{tags}" class="form-control" th:placeholder="Title" required>
+                            </p>        
+                            -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-light">CREATE</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">CANCEL</button>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
