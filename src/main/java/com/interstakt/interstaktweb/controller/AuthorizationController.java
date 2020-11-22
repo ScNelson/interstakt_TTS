@@ -40,13 +40,14 @@ public class AuthorizationController {
 
     @GetMapping(value = "/about")
     public String about(Model model) {
+        model.addAttribute("section", "about");
         checkLoggedIn(model);
         return "about";
     }
 
-    @GetMapping(value = "/about/overview")
-    public String overview(Model model) {
-        model.addAttribute("section", "overview");
+    @GetMapping(value = "/about/{section}")
+    public String overview(@PathVariable String section, Model model) {
+        model.addAttribute("section", section);
         checkLoggedIn(model);
         return "about";
     }
