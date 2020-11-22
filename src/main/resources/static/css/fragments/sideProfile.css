@@ -2,12 +2,12 @@
     display: inline;
     width: 200px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 12vh;
 }
 
 .profile-content {
     position: relative;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .side-score-div {
@@ -16,7 +16,7 @@
     width: 28%;
 }
 
-.side-mid-div {
+.side-voice-div {
     display: inline-block;
     text-align: center;
     border: white;
@@ -25,7 +25,28 @@
     width: 34%;
 }
 
+.side-scene-div {
+    display: inline-block;
+    text-align: center;
+    width: 28%;
+}
+
 .side-score-element {
+    font-size: 12px;
     display: block;
     width: 100%;
+}
+
+.side-score-element-count {
+    display: block;
+    width: 45px;
+    margin: auto;
+    padding-top: 3px;
+    font-size: 12px;
+    font-weight: bolder;
+    height: 25px;
+}
+
+.profile-name {
+    margin-top: 20px;
 }
