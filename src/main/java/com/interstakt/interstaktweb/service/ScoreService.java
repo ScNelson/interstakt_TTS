@@ -34,6 +34,11 @@ public class ScoreService {
         return scores;
     }
 
+    public List<Score> findAllByUserOrderTitle(User user) {
+        List<Score> scores = scoreRepository.findAllByComposerOrderByTitle(user);
+        return scores;
+    }
+
     public List<Score> findAllByUser(User user) {
         List<Score> scores = scoreRepository.findAllByComposerOrderByCreatedAtDesc(user);
         return scores;

@@ -32,6 +32,11 @@ public class VoiceService {
         return voices;
     }
 
+    public List<Voice> findAllByUserOrderName(User user) {
+        List<Voice> voices = voiceRepository.findAllByComposerOrderByName(user);
+        return voices;
+    }
+
     public List<Voice> findAllByScore(Score score) {
         List<Voice> voices = voiceRepository.findAllByScoreOrderByCreatedAtDesc(score);
         return voices;

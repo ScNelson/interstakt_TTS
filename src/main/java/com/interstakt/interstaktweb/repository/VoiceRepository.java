@@ -18,6 +18,8 @@ public interface VoiceRepository extends CrudRepository<Voice, Long>{
 
     List<Voice> findAllByOrderByCreatedAtDesc();
 
+    List<Voice> findAllByComposerOrderByName(User user);
+
     List<Voice> findAllByComposerOrderByCreatedAtDesc(User user);
 
     List<Voice> findAllByScoreOrderByCreatedAtDesc(Score score);

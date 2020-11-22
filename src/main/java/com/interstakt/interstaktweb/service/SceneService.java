@@ -34,6 +34,11 @@ public class SceneService {
         return scenes;
     }
 
+    public List<Scene> findAllByUserOrderName(User user) {
+        List<Scene> scenes = sceneRepository.findAllByComposerOrderByName(user);
+        return scenes;
+    }
+
     public List<Scene> findAllByScore(Score score) {
         List<Scene> scenes = sceneRepository.findAllByScoreOrderByCreatedAtDesc(score);
         return scenes;
