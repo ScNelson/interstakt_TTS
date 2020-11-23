@@ -4,6 +4,27 @@
     margin-bottom: 20px;
 }
 
+.level-list {
+    height: 58vh;
+    padding: 0px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.level-list::-webkit-scrollbar {
+    width: 1px;
+}
+
+.level-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.level-list::-webkit-scrollbar-thumb {
+    background: #2DFF0C;
+    border-radius: 20px;
+    opacity: 0;
+}
+
 .list-group-item {
     float: left;
     background-color: rgba(0, 0, 0, 0.527);
