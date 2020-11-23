@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/{userName}/score/{title}")
 public class ScoreController {
-   
+
     @Autowired
     private UserService userService;
-	
+
     @Autowired
     private ScoreService scoreService;
 
@@ -37,7 +37,7 @@ public class ScoreController {
 
     private Score currScore;
 
-    public void addScoreAttributes(Long id, Model model){
+    public void addScoreAttributes(Long id, Model model) {
         loggedInUser = userService.getLoggedInUser();
         currScore = scoreService.find(id);
         List<Voice> voices = voiceService.findAllByScore(currScore);
@@ -50,11 +50,35 @@ public class ScoreController {
         model.addAttribute("sceneCount", scoreService.sceneCount(currScore.getId()));
         model.addAttribute("level", "score");
     }
-   
-    // Maybe change to {title}-{id}, and pass in the id value 
-    @GetMapping(value= {"/{id}"})
-    public String getScoreWithID(@PathVariable Long id, Model model){
+
+    @GetMapping(value = { "/{id}" })
+    public String getScoreWithID(@PathVariable Long id, Model model) {
         addScoreAttributes(id, model);
+        return "score";
+    }
+
+    @RequestMapping(value = "/edit/{id}")
+    public String editScoreWithId(@PathVariable Long id, Model model) {
+
+        addScoreAttributes(id, model);
+
+        return "editScore";
+    }
+
+    @RequestMapping(value = "/update/{id}")
+    public String updateExistingScore(@PathVariable Long id, Score score, Model model) {
+        Score updatedScore = scoreService.find(id);
+        updatedScore.setTitle(score.getTitle());
+        if (score.getImgURL() != "") {
+            updatedScore.setImgURL(score.getImgURL());
+        } else {
+            updatedScore.setImgURL(null);
+        }
+        scoreService.save(updatedScore);
+        model.addAttribute("score", updatedScore);
+
+        addScoreAttributes(id, model);
+
         return "score";
     }
 
@@ -73,7 +97,7 @@ public class ScoreController {
         voiceService.delete(voiceId);
 
         addScoreAttributes(id, model);
-        
+
         return "redirect:/" + loggedInUser.getUsername() + "/score/" + currScore.getTitle() + "/" + id;
     }
 }
