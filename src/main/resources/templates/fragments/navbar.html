@@ -22,8 +22,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mr-2">
-                            <a class="nav-link" th:href="@{/{username}/scores (username=${user.username})}" style="color: #ffffff" sec:authorize="isAuthenticated()">Scores</a>
+                            <a class="nav-link" th:href="@{/{username}/scores (username=${user.username})}" sec:authorize="isAuthenticated()">Scores</a>
                         </li>
+                        <!--
                         <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,28 +35,27 @@
                                 <a class="dropdown-item" href="#">Scenes</a>
                             </div>
                         </li>  
-                        <!--Make a MIDI dropdown, containing Controllers (MIDI controllers, controller interfaces) and Destinations (CCs, Ableton/Resolume)-->
+                        Make a MIDI dropdown, containing Controllers (MIDI controllers, controller interfaces) and Destinations (CCs, Ableton/Resolume)
                         <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff">Controllers</a>
+                            <a class="nav-link">Controllers</a>
                         </li>
-                        <!--Instruments can include built-in synthesizers, as well as custom made synthesizers/samplers. Maybe make effects too?-->
+                        Instruments can include built-in synthesizers, as well as custom made synthesizers/samplers. Maybe make effects too?
                         <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff">Instruments</a>
-                        </li>
-                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff">Performances</a>
-                        </li>
-                        <!--Add a Playground option-->
-                        <!--
-                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff">Tags</a>
+                            <a class="nav-link">Instruments</a>
                         </li>
                         <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff">Recordings</a>
+                            <a class="nav-link">Performances</a>
+                        </li>
+                        Add a Playground option
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link">Tags</a>
+                        </li>
+                        <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
+                            <a class="nav-link">Recordings</a>
                         </li>               
                         -->
                         <li class="nav-item mr-2" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" style="color: #ffffff" th:href="@{/{username}/search (username = ${user.username})}">Search</a>
+                            <a class="nav-link" th:href="@{/{username}/search (username = ${user.username})}">Search</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav navbar-right" th:object="${user}">
@@ -74,22 +74,22 @@
                         </li>  
                         --> 
                         <li sec:authorize="isAuthenticated()" class="nav-item">
-                            <a class="nav-link"
-                                th:href="@{/{user}/profile (user=${user.username})}" style="color: #2DFF0C">
+                            <a class="nav-link username"
+                                th:href="@{/{user}/profile (user=${user.username})}">
                                 <span sec:authentication="name"></span>
                             </a>
                         </li>
                         <li sec:authorize="isAuthenticated()" class="nav-item">
                             <a class="nav-link" href="../logout"
-                                style="color: #ffffff">Logout</a>
+                            >Logout</a>
                         </li>
                         <li sec:authorize="!isAuthenticated()" class="nav-item">
                             <a class="nav-link" href="../login"
-                                style="color: #ffffff">Login</a>
+                            >Login</a>
                         </li>
                         <li sec:authorize="!isAuthenticated()" class="nav-item">
                             <a class="nav-link" href="../signup"
-                                style="color: #ffffff">Sign Up</a>
+                            >Sign Up</a>
                         </li>
                     </ul>
                 </div>
