@@ -79,7 +79,30 @@ input:focus {
 .level-ul {
     height: 55vh;
     overflow: scroll;
+    overflow-x: hidden;
     padding: 2%;
+}
+
+.level-ul::-webkit-scrollbar {
+    width: 0px;
+    visibility: hidden;
+}
+
+.level-ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.level-ul::-webkit-scrollbar-thumb {
+    background: #2DFF0C;
+    border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.level-ul:hover::-webkit-scrollbar-thumb {
+    background-color: #2DFF0C;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .level-path {
