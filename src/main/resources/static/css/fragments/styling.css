@@ -38,11 +38,11 @@ a:hover {
     border-radius: 5px 5px 5px 5px !important;
 }
 
-.username, .authentification {
+.username, .authentication {
     color: #2DFF0C;
 }
 
-.username:hover, .authentification:hover {
+.username:hover, .authentication:hover {
     color:  #c1ffb7;
 }
 
