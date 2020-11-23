@@ -5,11 +5,57 @@ html {
 
 body {
     background-color: #373B40;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: 'Work Sans', sans-serif;
-    padding-top: 70px;
+    font-weight: 300;
+    padding-top: 61px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+.nav-item:hover {
+    color: #2DFF0C;
+}
+
+a {
+    color: white;
+}
+
+a .nav-link:hover {
+    color: #2DFF0C;
 }
 
 a:hover {
     text-decoration: none;
+    color: #2DFF0C;
+}
+
+.list-group-item {
+    background-color: rgba(0, 0, 0, 0.527);
+    margin-bottom: 3px;
+    border-radius: 5px 5px 5px 5px !important;
+}
+
+.username, .authentification {
+    color: #2DFF0C;
+}
+
+.username:hover, .authentification:hover {
+    color:  #c1ffb7;
+}
+
+.badge {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.badge-dark {
+    background-color: black;
+    color: #2DFF0C;
+}
+
+.interstakt-green {
+    color: #2DFF0C;
 }
