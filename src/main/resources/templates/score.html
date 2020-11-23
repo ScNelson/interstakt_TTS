@@ -4,36 +4,56 @@
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
     <link rel="stylesheet" href="/css/score.css">
+    <link rel="stylesheet" href="/css/fragments/scoreLevels.css">
 </head>
 
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-        <h1 th:text=${score.title}></h1>
+        <h2 class="score-title" th:text=${score.title}></h2>
         <!--
         <h3>Score Scenes</h3>
         <button class="btn btn-outline-light" type="button">New</button>
-        -->
-        <h3>Voices</h3>
-        <!--
+        
         When creating a new Voice, add checkbox indicating whether you want to include a Score's tags
         Do the same for Scene's as well (inherit Score or Voice tags, or both)
         -->
         <div>
-            <ul class="list-inline list-group-horizontal" th:each="voice:${voiceList}">
-                <li class="list-group-item">
-                    <a th:href="@{/{username}/score/{title}/{name}/{id}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, id=${score.id}, voiceId=${voice.id})}">
-                        <span th:text="${voice.name}"></span>
-                    </a>
-                    <a href="#" th:href="@{/{username}/score/{title}/delete/{id}-{voiceId}(username=${user.username}, title=${score.title}, id=${score.id}, voiceId=${voice.id})}">
-                        <button class="btn btn-outline-danger postAlterButton">Delete</button>
-                    </a>
+            <ul class="list-inline list-group-horizontal">
+                <li class="list-group-item level-group" th:each="voice:${voiceList}">
+                    <div class="item-title">
+                        <a th:href="@{/{username}/score/{title}/{name}/{id}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, id=${score.id}, voiceId=${voice.id})}">
+                            <span class="item-title-text" th:text="${voice.name}"></span>
+                        </a>
+                        <a href="#" th:href="@{/{username}/score/{title}/delete/{id}-{voiceId}(username=${user.username}, title=${score.title}, id=${score.id}, voiceId=${voice.id})}">
+                            <img class="level-del" src="/images/delete_outline-white-48dp.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="level-list list-group-item">
+                        <div th:each="scene:${voice.scenes}" class="sub-level">
+                            <svg width="8" height="8" class="level-trigger">
+                                <circle cx="5" cy="5" r="4" stroke="#2DFF0C" stroke-width="0" fill="#CEE5E8" />
+                              </svg>
+                            <a th:href="@{/{username}/score/{title}/{voiceName}/sceneName/{id}-{voiceId}-{sceneId} (username=${user.username}, title=${score.title}, voiceName=${voice.name}, sceneName=${scene.name}, id=${score.id}, voiceId=${voice.id}, sceneId=${scene.id})}">
+                                <span class="sub-title" th:text="${scene.name}"></span>
+                            </a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New</button>
+        <div th:if="${#lists.isEmpty(voiceList)}">
+            <button class="btn btn-outline-light level-add-btn-empty" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="level-add" src="/images/add-white-48dp.svg" alt="">
+            </button>
+        </div>
+        <div th:unless="${#lists.isEmpty(voiceList)}">
+            <button class="btn btn-outline-light level-add-btn" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="level-add" src="/images/add-white-48dp.svg" alt="">
+            </button>
+        </div>
     </div>
-    <div th:replace="fragments/newVoice"></div>
+    <div th:replace="fragments/modals/newVoice"></div>
     <!--Maybe don't include footer in the level pages-->
     <div th:replace="fragments/footer"></div>
 </body>
