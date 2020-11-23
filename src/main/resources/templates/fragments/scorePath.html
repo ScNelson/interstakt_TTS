@@ -12,11 +12,11 @@
             </span>
               > 
             <span>
-                <a th:if="${level == 'voice'}" th:text="${voice.name}"></a>
+                <a th:if="${level == 'voice'}" th:text="${voice.name}" style="color: #2DFF0C;"></a>
                 <a th:if="${level == 'scene'}" th:href="@{/{username}/score/{title}/{name}/{scoreId}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, scoreId = ${score.id}, voiceId = ${voice.id})}" th:text="${voice.name}"></a>
             </span> 
             <span th:unless="${level == 'voice'}">
-                > <a th:text="${scene.name}"></a>
+                > <a th:text="${scene.name}" style="color: #2DFF0C;"></a>
             </span>
         </div>
         <!--
