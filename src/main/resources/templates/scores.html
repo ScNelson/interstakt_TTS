@@ -4,23 +4,28 @@
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
     <link rel="stylesheet" href="/css/scores.css">
+    <link rel="stylesheet" href="/css/fragments/scoreLevels.css">
 </head>
 
 <body>
     <div th:replace="fragments/navbar"></div>
     <div class="container">
         <div class="row d-flex justify-content-around">
-            <div th:replace="fragments/sideProfile" class="col"></div>
+            <div th:replace="fragments/sideProfile" class="col-none col"></div>
             <div class="scores-div col">
                 <div th:if="${not #lists.isEmpty(scoreList)}">
                     <div class="scores-head">
-                        <h1 class="scores-title">Scores</h1>
+                        <h1 class="scores-title">SCORES</h1>
                         <button class="btn btn-outline-light new-score-btn" type="button" data-toggle="modal"
-                            data-target="#exampleModalCenter">New Score</button>
+                            data-target="#exampleModalCenter">
+                            <img class="level-add" src="/images/add-white-48dp.svg" alt="">
+                        </button>
+                            <!-- 
                             <input class="input new-score-btn" type="text" id="myInput" onkeyup="searchLevels(scoreList, voiceList, sceneList)" placeholder="Search">
                             <a class="new-score-btn" th:href="@{/{username}/search (username = ${user.username})}">
                                 Search All
                             </a>
+                            -->
                     </div>
                     <div class="scores-body">
                         <div th:each="score:${scoreList}">
@@ -36,7 +41,7 @@
             </div>
         </div>
         </div>
-    <div th:replace="fragments/newScore"></div>
+    <div th:replace="fragments/modals/newScore"></div>
     <div th:replace="fragments/modals/scoreProperties"></div>
     <div th:replace="fragments/footer"></div>
 </body>
