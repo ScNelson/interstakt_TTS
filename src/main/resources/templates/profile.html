@@ -3,26 +3,42 @@
 
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
+    <link href="/css/profile.css" rel="stylesheet">
 </head>
 
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-        <!-- User profile page begins -->
-        <h2><span th:text="${user.firstName}"></span>
-            <span th:text="${user.lastName}"></span> (<span style="color: #2DFF0C"><span
-                    th:text="${user.username}"></span></span>)</h2>
-        <h5>Joined <span th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5>
-            <h6 class="side-score-element">Scores</h6>
-            <a href="" th:text="${scoreCount}"></a>
-        
-            <h6 class="side-score-element">Voices</h6>
-            <a href="" th:text="${voiceCount}"></a>
-        
-            <h6 class="side-score-element">Scenes</h6>
-            <a href="" th:text="${sceneCount}"></a>
-            <br>
-            <h6 class="side-score-element">Controllers</h6>
+        <div class="top row">
+            <div class="top-img col-sm-6">
+                <img src="../images/InterstaktLogo_FixedRound.png" alt="" width="200px" height="200px">
+            </div>
+            <div class="top-info col-sm-6">
+                <h2><span th:text="${user.firstName}"></span>
+                    <span th:text="${user.lastName}"></span></h2>
+                <h5>Username: <span class="info-text" style="color: #2DFF0C"><span
+                            th:text="${user.username}"></span></span></h5>
+                <h5>Email: <span class="info-text" th:text="${user.email}"></span></h5>
+                <h5>Joined: <span class="info-text" th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5>
+            </div>
+        </div>
+        <div class="bottom">
+            <h4 class="section-title">COMPOSITIONS</h4>    
+            <div class="section-div">
+                <div class="section-item-div">
+                    <h5 class="section-item-title">Scores</h5>
+                    <a class="section-item badge badge-dark badge-pill" href="" th:text="${scoreCount}"></a>
+                </div>
+                <div class="section-item-div">
+                    <h5 class="section-item-title">Voices</h5>
+                    <a class="section-item badge badge-dark badge-pill" href="" th:text="${voiceCount}"></a>
+                </div>
+                <div class="section-item-div">
+                    <h5 class="section-item-title">Scenes</h5>
+                    <a class="section-item badge badge-dark badge-pill" href="" th:text="${sceneCount}"></a>
+                </div>
+            </div>
+        </div>
     </div>
     <div th:replace="fragments/footer"></div>
 </body>
