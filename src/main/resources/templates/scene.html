@@ -4,14 +4,16 @@
 <head>
     <div th:replace="fragments/styling :: headStyles"></div>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/fragments/scoreLevels.css">
 </head>
 
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <div th:replace="fragments/scorePath :: scorePath"></div>
-        <h1 th:text=${scene.name}></h1>
-        <h3>Scenes</h3>
+        <h2 class="level-title" th:text=${scene.name}></h2>
+        <h5 class="level-title">Scenes are not yet functional</h5>
+        <!--
         <ul class="list-group" th:each="scene:${sceneList}">
             <li class="list-group-item">
                 <a th:href="@{/score/{title}/{name}(title=${score.title}, name=${voice.name})}">
@@ -22,10 +24,19 @@
                 </a>
             </li>
         </ul>
-        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModalCenter">New
-            Scene</button>
+            <div th:if="${#lists.isEmpty(sceneList)}">
+            <button class="btn btn-outline-light level-add-btn-empty" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="level-add" src="/images/add-white-48dp.svg" alt="">
+            </button>
+        </div>
+        <div th:unless="${#lists.isEmpty(sceneList)}">
+            <button class="btn btn-outline-light level-add-btn" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="level-add" src="/images/add-white-48dp.svg" alt="">
+            </button>
+        </div>
+        -->
     </div>
-    <div th:replace="fragments/newScene"></div>
+    <div th:replace="fragments/modals/newScene"></div>
     <div th:replace="fragments/footer"></div>
 </body>
 
