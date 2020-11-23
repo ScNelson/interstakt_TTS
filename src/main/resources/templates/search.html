@@ -10,14 +10,15 @@
     <div th:replace="fragments/navbar"></div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
-                <button class="btn btn-outline-light" type="button" onclick="viewAllLevels()">View All</button>
+            <div class="col-sm-3 filters">
+                <h3 class="filters-title">Filters</h3>
+                <button class="btn btn-outline-light view-all" type="button" onclick="viewAllLevels()">View All</button>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <p class="searchTitle">Search</p>
                 <input class="input searchBar" type="text" id="myInput"
                     onkeyup="searchLevels(scoreList, voiceList, sceneList)" placeholder="Search">
-                <div id="levelsList" class="row"></div>
+                <div id="levelsList" class="row searchResults"></div>
             </div>
         </div>
     </div>
