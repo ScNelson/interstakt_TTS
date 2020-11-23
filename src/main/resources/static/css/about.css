@@ -31,7 +31,7 @@ body {
     left: 0;
     color: black;
     background-color: #373B40;
-    overflow: scroll;
+    overflow: hidden;
     border-radius: 0%;
     border: white;
     border-style: solid;
