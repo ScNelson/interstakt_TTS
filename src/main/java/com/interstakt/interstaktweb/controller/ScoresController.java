@@ -56,6 +56,11 @@ public class ScoresController {
         User user = userService.getLoggedInUser();
         if (!bindingResult.hasErrors()) {
             score.setComposer(user);
+            if (score.getImgURL() != "") {
+                score.setImgURL(score.getImgURL());
+            } else {
+                score.setImgURL(null);
+            }
             scoreService.save(score);
             model.addAttribute("successMessage", "Score successfully created!");
             addComposerAttributes(model);
