@@ -16,7 +16,9 @@
         <div id="sidebar">
             <div class="list-group">
                 <div class="list-group-item">
-                    <h3 class="list-group-item-heading about-title">About</h3>
+                    <a href="/about">
+                        <h3 id="about" class="list-group-item-heading about-title">About</h3>
+                    </a>
                 </div>
                 <div class="list-group-item">
                     <a href="/about/overview">
@@ -24,7 +26,7 @@
                     </a>
                 </div>
                 <div class="list-group-item">
-                    <a href="/about/features/hierarchies">
+                    <a href="/about/features">
                         <h4 id="features" class="list-group-item-heading">Features</h4>
                     </a>
                     <div th:if="${section == 'features'}">
@@ -32,19 +34,60 @@
                         <a id="triggers" class="list-group-item-text" href="/about/features/triggers">Triggers</a>
                         <a id="parameters" class="list-group-item-text" href="/about/features/parameters">Parameters</a>
                         <a id="mappings" class="list-group-item-text" href="/about/features/mappings">Mappings</a>
-                        <a id="featuresController" class="list-group-item-text" href="/about/features/featuresController">General Controller</a>
-                        <a id="keyboard" class="list-group-item-text" href="/about/features/keyboard">Meta-Keyboard</a>
+                        <a id="controllers" class="list-group-item-text" href="/about/features/controllers">Controllers</a>
                         <a id="controlScenes" class="list-group-item-text" href="/about/features/controlScenes">Control Scenes</a>
                     </div>
                 </div>
                 <div class="list-group-item">
-                    <a href="/about/demo/algorithmic">
+                    <a href="/about/demo">
                         <h4 id="demo" class="list-group-item-heading">Demo</h4>
                     </a>
                     <div th:if="${section == 'demo'}">
-                        <a id="algorithmic" class="list-group-item-text" onclick="changeView('demo', 'algorithmic'); return false;">Algorithmic</a>
-                        <a id="demoController" class="list-group-item-text" onclick="changeView('demo', 'demoController'); return false;">Controller</a>
+                        <a id="algorithmic" class="list-group-item-text" href="/about/demo/algorithmic">Algorithmic</a>
+                        <a id="demoController" class="list-group-item-text" href="/about/demo/demoController">Controller</a>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div th:if="${section == 'about'}">
+                <div th:replace="fragments/about/about"></div>
+            </div>
+            <div th:if="${section == 'overview'}">
+                <div th:replace="fragments/about/overview"></div>
+            </div>
+            <div th:if="${section == 'features'}">
+                <div th:if="${subsection == null}">
+                    <div th:replace="fragments/about/features"></div>
+                </div>
+                <div th:if="${subsection == 'hierarchies'}">
+                    <div th:replace="fragments/about/features/hierarchies"></div>
+                </div>
+                <div th:if="${subsection == 'triggers'}">
+                    <div th:replace="fragments/about/features/triggers"></div>
+                </div>
+                <div th:if="${subsection == 'parameters'}">
+                    <div th:replace="fragments/about/features/parameters"></div>
+                </div>
+                <div th:if="${subsection == 'mappings'}">
+                    <div th:replace="fragments/about/features/mappings"></div>
+                </div>
+                <div th:if="${subsection == 'controllers'}">
+                    <div th:replace="fragments/about/features/controllers"></div>
+                </div>
+                <div th:if="${subsection == 'controlScenes'}">
+                    <div th:replace="fragments/about/features/controlScenes"></div>
+                </div>
+            </div>
+            <div th:if="${section == 'demo'}">
+                <div th:if="${subsection == null}">
+                    <div th:replace="fragments/about/demo"></div>
+                </div>
+                <div th:if="${subsection == 'algorithmic'}">
+                    <div th:replace="fragments/about/demo/algorithmic"></div>
+                </div>
+                <div th:if="${subsection == 'demoController'}">
+                    <div th:replace="fragments/about/demo/controller"></div>
                 </div>
             </div>
         </div>
