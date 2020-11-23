@@ -46,6 +46,8 @@ public class Score {
 
     private String createdTimestamp;
 
+    private String imgURL;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "score_tag", joinColumns = @JoinColumn(name = "score_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags;
@@ -130,9 +132,17 @@ public class Score {
         this.tags = tags;
     }
 
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
     @Override
     public String toString() {
         return "Score [composer=" + composer + ", createdAt=" + createdAt + ", createdTimestamp=" + createdTimestamp
-                + ", tags=" + tags + ", title=" + title + ", voices=" + voices + "]";
+                + ", imgURL=" + imgURL + ", tags=" + tags + ", title=" + title + ", voices=" + voices + "]";
     }
 }
