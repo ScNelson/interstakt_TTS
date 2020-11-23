@@ -6,12 +6,11 @@
 
 <body>
     <div th:fragment="scorePath">
-        <div>
+        <div style="margin-top: 10px;">
             <span>
                 <a th:href="@{/{username}/score/{title}/{id} (username=${user.username}, title=${score.title}, id=${score.id})}" th:text="${score.title}"></a>
             </span>
-
-             > 
+              > 
             <span>
                 <a th:if="${level == 'voice'}" th:text="${voice.name}"></a>
                 <a th:if="${level == 'scene'}" th:href="@{/{username}/score/{title}/{name}/{scoreId}-{voiceId} (username=${user.username}, title=${score.title}, name=${voice.name}, scoreId = ${score.id}, voiceId = ${voice.id})}" th:text="${voice.name}"></a>
