@@ -9,32 +9,39 @@
     <div th:fragment="scoreBody">
         <div class="scoreBodyDiv">
             <div class="score-image-div">
-                <img class="score-image" src="https://i.pinimg.com/originals/04/bc/b5/04bcb52b7eb3bd42c68195133931f15a.gif" alt="">
+                <img th:if="${score.imgURL == null}" class="score-image" src="https://media.tenor.com/images/d1d7f6ef9cf24497a9d61b0a83a0f50e/tenor.gif" alt="">
+                <img th:unless="${score.imgURL == null}"class="score-image" th:src="${score.imgURL}" alt="">
             </div>
             <div class="score-info">
                 <div class="scoreTitleDiv">
                     <a th:href="@{/{username}/score/{title}/{id}(username= ${user.username}, title=${score.title}, id=${score.id})}">
                         <h3 th:text="${score.title}" class="scoreTitle"></h3>
                     </a>
-                    <p th:text="${score.createdTimestamp}" class="scoreTimestamp"></p>
+                    <a href="#" th:href="@{/{username}/scores/delete/{id}(username=${user.username}, id=${score.id})}">
+                        <button class="btn btn-outline-light scoreAlterButton danger">
+                            <img class="score-alter-img" src="/images/delete_outline-white-48dp.svg" alt="">
+                        </button>
+                    </a>
+                    <a href="#" th:href="@{/{username}/score/{title}/edit/{id}(username= ${user.username}, title=${score.title}, id=${score.id})}">
+                        <!-- 
+                            <button class="btn btn-outline-light scoreAlterButton" data-toggle="modal"
+                            data-target="#scorePropertiesModal">
+                        -->
+                        <button class="btn btn-outline-light scoreAlterButton">
+                        <img class="score-alter-img" src="/images/edit-white-48dp.svg" alt="">
+                        </button>
+                    </a>
                 </div>
-
+                <!--
                 <div class="scoreTagDiv">
                     <p class="scoreTagTitle">Tags: </p>
-                    <!--
                     <div class="scoreTag" th:each="tag:${score.tags}">
                         <a class="card-text" th:text="${tag.phrase}" th:href="@{../../blogpostss/tags/{id}(id=${tag.phrase})}"></a>
                     </div>
-                    -->
                 </div>
+                -->
                 <div class="card-footer">
-                    <a href="#">
-                        <button class="btn btn-outline-light scoreAlterButton" data-toggle="modal"
-                        data-target="#scorePropertiesModal">Edit</button>
-                    </a>
-                    <a href="#" th:href="@{../../{username}/scores/delete/{id}(username=${user.username}, id=${score.id})}">
-                        <button class="btn btn-outline-danger scoreAlterButton">Delete</button>
-                    </a>
+                    <p th:text="${score.createdTimestamp}" class="scoreTimestamp"></p>
                 </div>
             </div>
         </div>
